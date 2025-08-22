@@ -3,11 +3,11 @@ import chroma from 'chroma-js';
 /* Configure colors at https://shipixen.com/color-theme-explorer-shadcn */
 export const colors = {
   primary: {
-    lighter: '#a5b4fc',
-    light: '#818cf8',
-    main: '#6366f1',
-    dark: '#4f46e5',
-    darker: '#4338ca',
+    lighter: '#B3D1FF',
+    light: '#73ABFF',
+    main: '#2C80FF',
+    dark: '#1F63CC',
+    darker: '#184DA3',
   },
   secondary: {
     lighter: '#86efac',

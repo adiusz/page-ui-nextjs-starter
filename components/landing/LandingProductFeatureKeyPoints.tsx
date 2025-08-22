@@ -47,9 +47,9 @@ export const LandingProductFeatureKeyPoints = ({
   );
 
   return (
-    <dl
+    <div
       className={clsx(
-        'mt-10 max-w-xl text-base leading-7 text-gray-600 dark:text-gray-500 lg:max-w-md',
+        // 'mt-10 max-w-xl text-base leading-7 text-gray-600 dark:text-gray-500 lg:max-w-md',
         className,
       )}
     >
@@ -75,6 +75,6 @@ export const LandingProductFeatureKeyPoints = ({
           </div>
         );
       })}
-    </dl>
+    </div>
   );
 };

@@ -18,7 +18,7 @@ export const LandingProductSteps = ({
   titleComponent,
   description,
   descriptionComponent,
-  withBackground = true,
+  withBackground = false,
   withBackgroundGlow = false,
   variant = 'primary',
   backgroundGlowVariant = 'primary',

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Syne } from 'next/font/google';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css";
 
 const displayFont = Syne({
@@ -26,7 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-     <body className={`${baseFont.variable} ${displayFont.variable} scroll-smooth`}>{children}</body>
+     <body className={`${baseFont.variable} ${displayFont.variable} scroll-smooth`}>
+       {children}
+       <SpeedInsights />
+     </body>
     </html>
   );
 }

@@ -7,7 +7,7 @@ type Child = ReactElement<any, any>;
 
 const Arrow = ({ className }: { className?: string }) => {
   return (
-    <div className={clsx('h-[120px] flex opacity-20', className)}>
+    <div className={clsx('h-[80px] flex opacity-20', className)}>
       <svg
         viewBox="0 0 39 119"
         fill="none"
@@ -37,7 +37,7 @@ export const LandingProblemAgitator = ({
   cliffhanger,
   cliffhangerComponent,
   textPosition = 'center',
-  withBackground = true,
+  withBackground = false,
   withBackgroundGlow = false,
   variant = 'primary',
   backgroundGlowVariant = 'primary',

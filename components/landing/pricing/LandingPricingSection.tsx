@@ -18,6 +18,8 @@ export const LandingPricingSection = ({
   withBackgroundGlow = false,
   variant = 'primary',
   backgroundGlowVariant = 'primary',
+  pt0,
+  pb0,
 }: {
   children?: React.ReactNode;
   className?: string;
@@ -30,6 +32,8 @@ export const LandingPricingSection = ({
   withBackgroundGlow?: boolean;
   variant?: 'primary' | 'secondary';
   backgroundGlowVariant?: 'primary' | 'secondary';
+  pt0?: boolean;
+  pb0?: boolean;
 }) => {
   const columnNumber = React.Children.count(children);
 
@@ -45,6 +49,8 @@ export const LandingPricingSection = ({
           : '',
         withBackgroundGlow ? 'relative overflow-hidden' : '',
         className,
+        pt0 && "!pt-0",
+        pb0 && "!pb-0",
       )}
     >
       {withBackgroundGlow ? (
@@ -58,7 +64,7 @@ export const LandingPricingSection = ({
 
       <div
         className={clsx(
-          'w-full p-6 flex flex-col items-center relative',
+          'w-fullflex flex-col items-center relative',
           textPosition === 'center' ? 'justify-center' : 'md:max-w-2xl',
         )}
       >
@@ -83,7 +89,7 @@ export const LandingPricingSection = ({
 
         <div
           className={clsx(
-            'isolate mt-12 grid mx-auto max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none text-left',
+            'isolate grid mx-auto max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none text-left',
             columnNumber === 2 ? 'lg:grid-cols-2' : '',
             columnNumber === 3 ? 'lg:grid-cols-3' : '',
             columnNumber === 4 ? 'lg:grid-cols-4' : '',

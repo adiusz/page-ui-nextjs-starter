@@ -95,7 +95,7 @@ export const LandingNewsletterSection = ({
           {withAvatars ? (
             <div className="flex mb-6">
               <Image
-                src="/static/images/people/1.webp"
+                src="/people/1.webp"
                 alt="Person 1"
                 width={200}
                 height={200}
@@ -103,7 +103,7 @@ export const LandingNewsletterSection = ({
               />
 
               <Image
-                src="/static/images/people/2.webp"
+                src="/people/2.webp"
                 alt="Person 2"
                 width={200}
                 height={200}
@@ -117,7 +117,7 @@ export const LandingNewsletterSection = ({
               />
 
               <Image
-                src="/static/images/people/3.webp"
+                src="/people/3.webp"
                 alt="Person 3"
                 width={200}
                 height={200}
@@ -131,7 +131,7 @@ export const LandingNewsletterSection = ({
               />
 
               <Image
-                src="/static/images/people/4.webp"
+                src="/people/4.webp"
                 alt="Person 4"
                 width={200}
                 height={200}
@@ -145,7 +145,7 @@ export const LandingNewsletterSection = ({
               />
 
               <Image
-                src="/static/images/people/5.webp"
+                src="/people/5.webp"
                 alt="Person 5"
                 width={200}
                 height={200}

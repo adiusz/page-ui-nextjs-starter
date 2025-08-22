@@ -19,7 +19,7 @@ export const LandingHeaderMenuItem = ({
   label?: string | React.ReactNode;
   type?: 'button' | 'link' | 'icon-button';
   onClick?: () => void;
-  variant?: 'primary' | 'secondary' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'ghost' | "outline" | "outlinePrimary";
   className?: string;
   children?: React.ReactNode;
 }) => {

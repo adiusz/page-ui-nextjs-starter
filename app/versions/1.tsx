@@ -1,0 +1,948 @@
+import { Users2, Package, Image as ImageIcon, Calculator, Paperclip, ChartPie, Layers, Workflow, ShieldCheck, Rocket, Loader2, Route, Warehouse } from "lucide-react";
+import { LandingHeader } from "@/components/landing/navigation/LandingHeader";
+import { LandingHeaderMenuItem } from "@/components/landing/navigation/LandingHeaderMenuItem";
+import { LandingPrimaryImageCtaSection, LandingPrimaryTextCtaSection } from "@/components/landing/cta/LandingPrimaryCta";
+import { LandingProductFeaturesGrid } from "@/components/landing/LandingProductFeaturesGrid";
+import { LandingProductFeature } from "@/components/landing/LandingProductFeature";
+import { LandingProductSteps } from "@/components/landing/LandingProductSteps";
+import { LandingPricingSection } from "@/components/landing/pricing/LandingPricingSection";
+import { LandingPricingPlan } from "@/components/landing/pricing/LandingPricingPlan";
+import { LandingTestimonialGrid } from "@/components/landing/testimonial/LandingTestimonialGrid";
+import { LandingSocialProofBand } from "@/components/landing/social-proof/LandingSocialProofBand";
+import { LandingSocialProofBandItem } from "@/components/landing/social-proof/LandingSocialProofBandItem";
+import { LandingNewsletterSection } from "@/components/landing/newsletter/LandingNewsletterSection";
+import Image from "next/image";
+import {
+  Button
+} from "@/components/shared/ui/button";
+import {
+  LandingAboutSection, LandingDiscount, LandingDotParticleCtaBg, LandingFaqCollapsibleSection,
+  LandingFaqSection,
+  LandingFeatureList, LandingFlickeringGridCtaBg,
+  LandingFlyingParticleCtaBg,
+  LandingFooter,
+  LandingFooterColumn,
+  LandingFooterLink,
+  LandingGridPatternCtaBg, LandingMarquee, LandingPathsCtaBg,
+  LandingProblemAgitator,
+  LandingProblemAgitatorComment,
+  LandingProblemAgitatorItem, LandingProductFeatureKeyPoints, LandingProductProblemSolution, LandingProductTourContent, LandingProductTourList, LandingProductTourSection, LandingProductTourTrigger,
+  LandingShapesCtaBg, LandingShowcase,
+  LandingStatsSection,
+  LandingWavesCtaBg
+} from "@/components/landing";
+import Logo from "@/components/logo";
+import { VideoPlayer } from "@/components/shared/VideoPlayer";
+import ProductTour from "@/app/components/product-tour";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/shared/ui/tabs";
+
+export default function V1() {
+  return (
+    <>
+      {/* Header */}
+      <LandingHeader
+        withBackground
+        fixed
+        logoComponent={<Logo centered />}
+      >
+        <LandingHeaderMenuItem href="#moduly" label="Moduły" />
+        <LandingHeaderMenuItem href="#funkcje" label="Funkcje" />
+        <LandingHeaderMenuItem href="#jak-dziala" label="Jak działa" />
+        <LandingHeaderMenuItem href="#cennik" label="Cennik" />
+        <LandingHeaderMenuItem href="#faq" label="FAQ" />
+        <LandingHeaderMenuItem
+          href=""
+          label="Logowanie"
+          type="button"
+          variant="outlinePrimary"
+        />
+        <LandingHeaderMenuItem
+          href="#cta"
+          label="Rozpocznij za darmo"
+          type="button"
+        />
+      </LandingHeader>
+
+      {/*<LandingAboutSection*/}
+      {/*  title="PrintFlow to aplikacja do zarzązdania drukarnią"*/}
+      {/*  description="We are committed to creating a safe and supportive environment where you can explore your thoughts and feelings, develop coping strategies, and achieve your mental health goals."*/}
+      {/*  imageSrc="/app_mock_desktop.png"*/}
+      {/*  imageAlt="About us image"*/}
+      {/*  // effectComponent={<LandingShapesCtaBg />}*/}
+      {/*/>*/}
+
+      {/* Hero Section */}
+      <LandingPrimaryImageCtaSection
+        title="Kompleksowe zarządzanie drukarnią w jednym miejscu"
+        description="PrintFlow to nowoczesna platforma online do prowadzenia drukarni fleksograficznych. Odzyskaj kontrolę nad odpadami, marżą, produktami, zleceniami, dokumentami. Analizuj kluczowe dane."
+        imageSrc="/app_mock_desktop.png"
+        imageAlt="PrintFlow app"
+        imagePosition="center"
+        textPosition="center"
+        minHeight={500}
+        // minHeight={1000}
+        // effectComponent={<LandingShapesCtaBg />}
+        effectComponent={<LandingWavesCtaBg variant="primary" />}
+
+      >
+        <Button size="xl" asChild variant="primary">
+          <a href="#trial">Wypróbuj</a>
+        </Button>
+        <Button size="xl" variant="outlinePrimary" asChild>
+          <a href="#demo">Zobacz demo</a>
+        </Button>
+
+        <LandingDiscount
+          className="w-full flex justify-center"
+          discountValueText="Testuj przez 30 dni za darmo."
+          discountDescriptionText="*Karta kredytowa nie jest wymagana."
+
+        />
+      </LandingPrimaryImageCtaSection>
+
+      <ProductTour />
+
+      {/* Feature List (dopasowane do funkcji) */}
+      <section id="funkcje">
+        <LandingFeatureList
+          // withBackground
+          title="Wszystko, czego potrzebujesz w jednej platformie"
+          description="Zawsze pod ręką, w nowoczesnym wydaniu"
+          featureItems={[
+            {
+              title: "Klienci i maszyny",
+              description: "Pełna baza klientów oraz rejestr maszyn.",
+              icon: <Users2 className="w-6 h-6" />
+            },
+            {
+              title: "Produkty i komponenty",
+              description: "Produkty ze specyfikacją: wykrojniki, kolory, materiały, podglądy, aniloksy i inne parametry techniczne.",
+              icon: <ImageIcon className="w-6 h-6" />
+            },
+            {
+              title: "Zlecenia z etapami produkcji",
+              description: "4 statusy procesu, dedykowane formularze, zgłaszanie uszkodzonych polimerów i użycia innych kolorów.",
+              icon: <Package className="w-6 h-6" />
+            },
+            // {
+            //   title: "Pełna ścieżka audytu: kto, co, ile i kiedy",
+            //   description: "",
+            //   icon: <Route className="w-6 h-6" />
+            // },
+            // {
+            //   title: "Kontrola przekazań i zwrotów materiałów",
+            //   description: "",
+            //   icon: <Warehouse className="w-6 h-6" />
+            // },
+            // {
+            //   title: "System wycen i kalkulatorów",
+            //   description: "Kalkulator marży i kosztów pozwala tworzyć Wyceny, na podstawie których stworzysz Produkt i Zlecenie. Wszystko z jednego okna!",
+            //   icon: <Calculator className="w-6 h-6" />
+            // },
+            // {
+            //   title: "Dokumenty WZ",
+            //   description: "Generuj dokumenty WZ (PDF/druk z przeglądarki). Faktury — wkrótce.",
+            //   icon: <Paperclip className="w-6 h-6" />
+            // },
+            // {
+            //   title: "Analityka i wydajność",
+            //   description: "Wykresy efektywności pracowników, odpady, historia operacji.",
+            //   icon: <ChartPie className="w-6 h-6" />
+            // }
+          ]}
+        />
+        <LandingFeatureList
+          withBackground
+          title="Pełna ścieżka audytu: kto, co, ile i kiedy"
+          withBackgroundGlow
+          // description="Zawsze pod ręką, w nowoczesnym wydaniu"
+          featureItems={[
+            {
+              title: "Dowiedz się kto dodał daną Wycenę oraz jakich cen użył",
+              description: "Chcesz wiedzieć, który z handlowców generuje największe marże? Nie ma problemu.",
+              icon: <Calculator className="w-6 h-6" />
+            },
+            {
+              title: "Kontrola przekazań i zwrotów materiałów",
+              description: "Stany magazynowe nie zawsze się zgadzają? Sprawdzaj kto i kiedy wydał oraz odebrał materiał.",
+              icon: <Warehouse className="w-6 h-6" />
+            },
+            {
+              title: "Sprawdzaj kto i kiedy pracował nad danym Zleceniem",
+              description: "Od momentu wydania materiału, przez drukowanie po przetwarzanie. Wszystko w jednym miejscu.",
+              icon: <Route className="w-6 h-6" />
+            },
+            // {
+            //   title: "System wycen i kalkulatorów",
+            //   description: "Kalkulator marży i kosztów pozwala tworzyć Wyceny, na podstawie których stworzysz Produkt i Zlecenie. Wszystko z jednego okna!",
+            //   icon: <Calculator className="w-6 h-6" />
+            // },
+            // {
+            //   title: "Dokumenty WZ",
+            //   description: "Generuj dokumenty WZ (PDF/druk z przeglądarki). Faktury — wkrótce.",
+            //   icon: <Paperclip className="w-6 h-6" />
+            // },
+            // {
+            //   title: "Analityka i wydajność",
+            //   description: "Wykresy efektywności pracowników, odpady, historia operacji.",
+            //   icon: <ChartPie className="w-6 h-6" />
+            // }
+          ]}
+        />
+      </section>
+
+
+      <section id="jak-dziala">
+        <LandingProductSteps
+          title="Jak to działa — w 4 prostych krokach"
+          description="Zarejestruj się i sprawdź. Założenie konta zajmuje 3 minuty!"
+          // withBackground
+        >
+          <LandingProductFeature
+            title="Dodaj pirewszego Klienta"
+            description={`Wypełnij formularz i kliknij "Dodaj". Jeśli chicałbyś zaimportować instniejącą listę Klientów (np. z pliku CSV), pomożemy w tym procesie!`}
+            imageSrc="/add_client_desktop.png"
+            imageAlt="Dodawanie Klienta"
+          />
+          {/*<LandingProductFeature
+            title="Stwórz konta pracowników"
+            description="Podaj login lub email, określ Rolę, wygeneruj hasło, a skopiowane do schowka dane logowania prześlij pracownikowi."
+            imageSrc="/add_user_desktop.png"
+            imageAlt="Tworzenie konta pracownika"
+          />*/}
+          <LandingProductFeature
+            title="Wybierz Klienta, a następnie dodaj Produkt"
+            description={`Stwórz wszystkie komponenty Produktu, pozostając na tej samej stronie i kliknij "Dodaj". Produkt stworzony i przypisany do wybranego Klienta.`}
+            imageSrc="/add_product_desktop.png"
+            imageAlt="Dodawanie Produktu"
+          />
+          <LandingProductFeature
+            title="Utwórz Zlecenie dla nowego Produktu"
+            description={`Wybierz Klienta, Produkt, który przed chwilą utworzyłeś, podaj nakład, datę realizacji i stwórz Zlecenie.`}
+            imageSrc="/add_order_desktop.png"
+            imageAlt="Dodwanie Zlecenia"
+          />
+          <LandingProductFeature
+            title="Przeglądaj i zarządzaj Zleceniami w 1 miejscu"
+            description={`Filtruj i przeglądaj Zlecenia, sprawdzaj etap produkcji, monitoruj odpady oraz zgłoszone uwagi.`}
+            imageSrc="/orders_desktop.png"
+            imageAlt="Zarządzanie zleceniami"
+          />
+          {/*<LandingProductFeature*/}
+          {/*  title="Analizuj wyniki"*/}
+          {/*  description="Raporty efektywności, odpady i historia — podejmuj decyzje na podstawie danych."*/}
+          {/*  imageSrc="https://picsum.photos/seed/step4/500/320"*/}
+          {/*  imageAlt="Monitorowanie wyników"*/}
+          {/*/>*/}
+        </LandingProductSteps>
+      </section>
+
+      {/* Problem Agitator */}
+      {/*<LandingProblemAgitator*/}
+      {/*  title="Czy Twoja drukarnia traci pieniądze przez brak kontroli procesu?"*/}
+      {/*  description="Ręczne operacje, rozproszone dane i brak analityki prowadzą do opóźnień, odpadów i wyższych kosztów."*/}
+      {/*  // cliffhanger="PrintFlow — platforma zaprojektowana specjalnie dla drukarni produkcyjnych"*/}
+      {/*>*/}
+      {/*  <LandingProblemAgitatorItem>Chaos w zarządzaniu zleceniami i materiałami</LandingProblemAgitatorItem>*/}
+      {/*  <LandingProblemAgitatorItem>Brak widoczności odpadów i kosztów produkcji</LandingProblemAgitatorItem>*/}
+      {/*  <LandingProblemAgitatorItem>Czasochłonne wyceny i dokumenty</LandingProblemAgitatorItem>*/}
+      {/*  <LandingProblemAgitatorItem>Brak mierzalnej wydajności pracowników</LandingProblemAgitatorItem>*/}
+      {/*  /!*<LandingProblemAgitatorComment className="-right-8 top-0">*!/*/}
+      {/*  /!*  Efekt: straty, opóźnienia i niezadowoleni klienci*!/*/}
+      {/*  /!*</LandingProblemAgitatorComment>*!/*/}
+      {/*</LandingProblemAgitator>*/}
+
+      {/* Problem / Solution (nowa sekcja) */}
+      {/*<LandingProductProblemSolution*/}
+      {/*  title="Rozwiązanie"*/}
+      {/*  description="Przekształć złożony proces produkcji w przejrzysty i kontrolowalny przepływ pracy."*/}
+      {/*  withBackground*/}
+      {/*  problems={[*/}
+      {/*    {*/}
+      {/*      title: "Rozproszone dane i ręczne aktualizacje",*/}
+      {/*      description:*/}
+      {/*        "Informacje o klientach, produktach, materiałach i zleceniach żyją w arkuszach i notatkach.",*/}
+      {/*      // icon: <Workflow className="w-6 h-6" />,*/}
+      {/*    },*/}
+      {/*    {*/}
+      {/*      title: "Brak kontroli etapów produkcji",*/}
+      {/*      description:*/}
+      {/*        "Niejasne statusy, brak historii i trudno mierzalna odpowiedzialność.",*/}
+      {/*      // icon: <Layers className="w-6 h-6" />,*/}
+      {/*    },*/}
+      {/*  ]}*/}
+      {/*  solutions={[*/}
+      {/*    {*/}
+      {/*      title: "Jedno źródło prawdy",*/}
+      {/*      description:*/}
+      {/*        "Centralna baza klientów, maszyn, produktów, materiałów i zleceń — powiązana, spójna i gotowa do raportowania."*/}
+      {/*      // icon: <ShieldCheck className="w-6 h-6" />,*/}
+      {/*    },*/}
+      {/*    {*/}
+      {/*      title: "Pełna kontrola nad pracą",*/}
+      {/*      description: "Wszystkie informacje zawsze pod ręką - nie przegap żadnej aktualizacji dzięki powiadomieniom."*/}
+      {/*    },*/}
+      {/*    {*/}
+      {/*      title: "Etapy i pełna ścieżka audytu",*/}
+      {/*      description:*/}
+      {/*        "5 statusów dopasowanych do fleksografii, dedykowane formularze, historia kto/co/kiedy + możliwość druku częściowego."*/}
+      {/*      // icon: <Rocket className="w-6 h-6" />,*/}
+      {/*    }*/}
+      {/*  ]}*/}
+      {/*/>*/}
+
+      {/* Sekcja: Moduły (nowa sekcja Product Features Grid) */}
+      <section id="moduly">
+        <LandingProductFeaturesGrid
+          title="Trzy moduły — jeden ekosystem"
+          description="Korzystaj już dziś z pełnego modułu fleksograficznego. Moduły cyfrowe w przygotowaniu."
+          withBackground
+        >
+          <LandingProductFeature
+            title="Fleksografia"
+            description="Kompletny, działający moduł: 5 statusów zlecenia, wydania i zwroty materiałów ze Sklepu/Magazynu, rejestr odpadów, zgłaszanie uszkodzonych polimerów, praca na kolorach, częściowy druk, pełna historia operacji."
+            imageSrc="https://picsum.photos/seed/flexo/500/320"
+            imageAlt="Moduł fleksograficzny"
+          />
+          <LandingProductFeature
+            title="Cyfrowy arkusz (w przygotowaniu)"
+            description="Planowane: konfiguracja pod digital sheet, uproszczone statusy, kalkulacje kosztowe dla krótkich serii, integracje z RIP/DFE."
+            imageSrc="https://picsum.photos/seed/sheet/500/320"
+            imageAlt="Moduł cyfrowy arkusz"
+          />
+          <LandingProductFeature
+            title="Cyfrowy rolowy (w przygotowaniu)"
+            description="Planowane: parametry roli, przebieg pracy inline, automatyzacja przeliczeń materiałowych i rozliczeń wolumenu."
+            imageSrc="https://picsum.photos/seed/web/500/320"
+            imageAlt="Moduł cyfrowy rolowy"
+          />
+        </LandingProductFeaturesGrid>
+      </section>
+
+      {/* Pasek statusu modułów (Social Proof Band – nowa komunikacja roadmapy) */}
+      {/*<section className="py-8 text-center" aria-label="Status modułów">*/}
+      {/*  <LandingSocialProofBand>*/}
+      {/*    <LandingSocialProofBandItem graphic="zap">*/}
+      {/*      Fleksografia: dostępna produkcyjnie*/}
+      {/*    </LandingSocialProofBandItem>*/}
+      {/*    <LandingSocialProofBandItem graphic="magic">*/}
+      {/*      Cyfrowy arkusz: w przygotowaniu*/}
+      {/*    </LandingSocialProofBandItem>*/}
+      {/*    <LandingSocialProofBandItem graphic="time">*/}
+      {/*      Cyfrowy rolowy: w przygotowaniu*/}
+      {/*    </LandingSocialProofBandItem>*/}
+      {/*  </LandingSocialProofBand>*/}
+      {/*</section>*/}
+
+
+      {/* Key Points (krótkie USP) */}
+
+
+      {/* Stats (nowa sekcja) */}
+      {/*<LandingStatsSection*/}
+      {/*  title="Efekty wdrożenia"*/}
+      {/*  description="Dane, które mają znaczenie w codziennej produkcji"*/}
+      {/*  stats={[*/}
+      {/*    {*/}
+      {/*      value: "5×", label: "Szybsze przygotowanie ofert",*/}
+      {/*      description: "aaa"*/}
+      {/*    },*/}
+      {/*    { value: '20%', label: 'Mniej odpadów dzięki kontroli etapów', description: "aaa" },*/}
+      {/*    { value: '100%', label: 'Historia operacji i rozliczalność', description: "aaa" },*/}
+      {/*    { value: '24/7', label: 'Dostęp do kluczowych danych', description: "aaa" },*/}
+      {/*  ]}*/}
+      {/*  withBackground*/}
+      {/*/>*/}
+
+      {/* Kroki: Jak działa */}
+
+      {/*<LandingProductTourSection*/}
+      {/*  title="Jak to działa — 5 prostych kroków"*/}
+      {/*  description="Założenie konta zajmuje 3 minuty!"*/}
+      {/*  defaultValue="step-1"*/}
+      {/*>*/}
+      {/*  <LandingProductTourList>*/}
+      {/*    {[*/}
+      {/*      {*/}
+      {/*        value: "step-1",*/}
+      {/*        title: "Dodaj pierwszego Klienta",*/}
+      {/*        description:*/}
+      {/*          "Wypełnij formularz i kliknij \"Dodaj\". Jeśli chciałbyś zaimportować istniejącą listę Klientów (np. z pliku CSV), pomożemy w tym procesie!",*/}
+
+      {/*      },*/}
+      {/*      {*/}
+      {/*        value: "step-2",*/}
+      {/*        title: "Stwórz konta pracowników",*/}
+      {/*        description:*/}
+      {/*          "Podaj login lub email, określ Rolę, wygeneruj hasło, a skopiowane do schowka dane logowania prześlij pracownikowi.",*/}
+
+
+      {/*      },*/}
+      {/*      {*/}
+      {/*        value: "step-3",*/}
+      {/*        title: "Wybierz Klienta, a następnie dodaj Produkt",*/}
+      {/*        description:*/}
+      {/*          "Stwórz wszystkie komponenty Produktu, pozostając na tej samej stronie i kliknij \"Dodaj\". Produkt stworzony i przypisany do wybranego Klienta.",*/}
+
+
+      {/*      },*/}
+      {/*      {*/}
+      {/*        value: "step-4",*/}
+      {/*        title: "Utwórz Zlecenie z nowego Produktu",*/}
+      {/*        description:*/}
+      {/*          "Wybierz Klienta, Produkt, który przed chwilą utworzyłeś, podaj nakład, datę realizacji i stwórz Zlecenie.",*/}
+
+      {/*      },*/}
+      {/*      {*/}
+      {/*        value: "step-5",*/}
+      {/*        title: "Przeglądaj i zarządzaj Zleceniami w 1 miejscu",*/}
+      {/*        description:*/}
+      {/*          "Filtruj i przeglądaj Zlecenia, sprawdzaj etap produkcji, monitoruj odpady oraz zgłoszone uwagi.",*/}
+
+      {/*      }*/}
+      {/*    ].map(({ value, title, description }) => (*/}
+      {/*      <LandingProductTourTrigger key={value} value={value}>*/}
+      {/*        <p className="text-xl font-bold">{title}</p>*/}
+      {/*        <p>{description}</p>*/}
+      {/*      </LandingProductTourTrigger>*/}
+      {/*    ))}*/}
+      {/*  </LandingProductTourList>*/}
+
+      {/*  {[*/}
+      {/*    {*/}
+      {/*      value: "step-1",*/}
+      {/*      src: "/add_client_desktop.png",*/}
+      {/*      alt: "Dodawanie Klienta"*/}
+
+      {/*    },*/}
+      {/*    {*/}
+      {/*      value: "step-2",*/}
+      {/*      src: "/add_user_desktop.png",*/}
+      {/*      alt: "Tworzenie konta pracownika"*/}
+
+
+      {/*    },*/}
+      {/*    {*/}
+      {/*      value: "step-3",*/}
+      {/*      src: "/add_product_desktop.png",*/}
+      {/*      alt: "Dodawanie Produktu"*/}
+
+
+      {/*    },*/}
+      {/*    {*/}
+      {/*      value: "step-4",*/}
+      {/*      src: "/add_order_desktop.png",*/}
+      {/*      alt: "Dodawanie Zlecenia"*/}
+
+      {/*    },*/}
+      {/*    {*/}
+      {/*      value: "step-5",*/}
+      {/*      src: "/orders_desktop.png",*/}
+      {/*      alt: "Zarządzanie zleceniami"*/}
+
+      {/*    }*/}
+      {/*  ].map(({ value, src, alt }) => (*/}
+      {/*    <LandingProductTourContent value={value}>*/}
+      {/*      <Image*/}
+      {/*        width={400}*/}
+      {/*        height={600}*/}
+      {/*        className="w-full rounded-md"*/}
+      {/*        src={src}*/}
+      {/*        alt={alt}*/}
+      {/*        fetchPriority="high"*/}
+      {/*      />*/}
+      {/*    </LandingProductTourContent>*/}
+      {/*  ))}*/}
+      {/*</LandingProductTourSection>*/}
+
+      {/*<LandingProductTourSection*/}
+      {/*  title="Jak to działa — 5 prostych kroków"*/}
+      {/*  description="Założenie konta zajmuje 3 minuty!"*/}
+      {/*  defaultValue="step-1"*/}
+      {/*>*/}
+      {/*  <LandingProductTourList>*/}
+      {/*    <LandingProductTourTrigger value="step-1">*/}
+      {/*      <p className="text-xl font-bold">*/}
+      {/*        Dodaj pierwszego Klienta*/}
+      {/*      </p>*/}
+      {/*      <p>*/}
+      {/*        Wypełnij formularz i kliknij "Dodaj". Jeśli chciałbyś zaimportować istniejącą listę Klientów (np. z pliku CSV), pomożemy w tym procesie!*/}
+      {/*      </p>*/}
+      {/*    </LandingProductTourTrigger>*/}
+
+      {/*    <LandingProductTourTrigger value="step-2">*/}
+      {/*      <p className="text-xl font-bold">*/}
+      {/*        Stwórz konta pracowników*/}
+      {/*      </p>*/}
+      {/*      <p>*/}
+      {/*        Podaj login lub email, określ Rolę, wygeneruj hasło, a skopiowane do schowka dane logowania prześlij pracownikowi.*/}
+      {/*      </p>*/}
+      {/*    </LandingProductTourTrigger>*/}
+
+      {/*    <LandingProductTourTrigger value="step-3">*/}
+      {/*      <p className="text-xl font-bold">*/}
+      {/*        Wybierz Klienta, a następnie dodaj Produkt*/}
+      {/*      </p>*/}
+      {/*      <p>*/}
+      {/*        Stwórz wszystkie komponenty Produktu, pozostając na tej samej stronie i kliknij "Dodaj". Produkt stworzony i przypisany do wybranego Klienta.*/}
+      {/*      </p>*/}
+      {/*    </LandingProductTourTrigger>*/}
+
+      {/*    <LandingProductTourTrigger value="step-4">*/}
+      {/*      <p className="text-xl font-bold">*/}
+      {/*        Utwórz Zlecenie z nowego Produktu*/}
+      {/*      </p>*/}
+      {/*      <p>*/}
+      {/*        Wybierz Klienta, Produkt, który przed chwilą utworzyłeś, podaj nakład, datę realizacji i stwórz Zlecenie.*/}
+      {/*      </p>*/}
+      {/*    </LandingProductTourTrigger>*/}
+
+      {/*    <LandingProductTourTrigger value="step-5">*/}
+      {/*      <p className="text-xl font-bold">*/}
+      {/*        Przeglądaj i zarządzaj Zleceniami w 1 miejscu*/}
+      {/*      </p>*/}
+      {/*      <p>*/}
+      {/*        Filtruj i przeglądaj Zlecenia, sprawdzaj etap produkcji, monitoruj odpady oraz zgłoszone uwagi.*/}
+      {/*      </p>*/}
+      {/*    </LandingProductTourTrigger>*/}
+      {/*  </LandingProductTourList>*/}
+
+      {/*  <LandingProductTourContent value="step-1">*/}
+      {/*    <img*/}
+      {/*      className="w-full rounded-md"*/}
+      {/*      src="/add_client_desktop.png"*/}
+      {/*      alt="Dodawanie Klienta"*/}
+      {/*    />*/}
+      {/*  </LandingProductTourContent>*/}
+
+      {/*  <LandingProductTourContent value="step-2">*/}
+      {/*    <img*/}
+      {/*      className="w-full rounded-md"*/}
+      {/*      src="/add_user_desktop.png"*/}
+      {/*      alt="Tworzenie konta pracownika"*/}
+      {/*    />*/}
+      {/*  </LandingProductTourContent>*/}
+
+      {/*  <LandingProductTourContent value="step-3">*/}
+      {/*    <img*/}
+      {/*      className="w-full rounded-md"*/}
+      {/*      src="/add_product_desktop.png"*/}
+      {/*      alt="Dodawanie Produktu"*/}
+      {/*    />*/}
+      {/*  </LandingProductTourContent>*/}
+
+      {/*  <LandingProductTourContent value="step-4">*/}
+      {/*    <img*/}
+      {/*      className="w-full rounded-md"*/}
+      {/*      src="/add_order_desktop.png"*/}
+      {/*      alt="Dodawanie Zlecenia"*/}
+      {/*    />*/}
+      {/*  </LandingProductTourContent>*/}
+
+      {/*  <LandingProductTourContent value="step-5">*/}
+      {/*    <img*/}
+      {/*      className="w-full rounded-md"*/}
+      {/*      src="/orders_desktop.png"*/}
+      {/*      alt="Zarządzanie zleceniami"*/}
+      {/*    />*/}
+      {/*  </LandingProductTourContent>*/}
+      {/*</LandingProductTourSection>*/}
+
+
+      {/* Showcase / Social Proof rozszerzony */}
+      {/*<section className="py-12 text-center">*/}
+      {/*  <h2 className="text-2xl font-bold mb-8">Zaufały nam drukarnie w całej Polsce</h2>*/}
+      {/*  <LandingSocialProofBand>*/}
+      {/*    <LandingSocialProofBandItem graphic="checkmark">*/}
+      {/*      250+ kont utworzonych w systemie*/}
+      {/*    </LandingSocialProofBandItem>*/}
+      {/*    <LandingSocialProofBandItem graphic="trophy">*/}
+      {/*      Wysoka stabilność i jakość wdrożeń*/}
+      {/*    </LandingSocialProofBandItem>*/}
+      {/*    <LandingSocialProofBandItem graphic="rating">*/}
+      {/*      Średnia ocena 4.9/5*/}
+      {/*    </LandingSocialProofBandItem>*/}
+      {/*    <LandingSocialProofBandItem graphic="zap">*/}
+      {/*      Szybkie wdrożenie i start pracy*/}
+      {/*    </LandingSocialProofBandItem>*/}
+      {/*    <LandingSocialProofBandItem graphic="magic">*/}
+      {/*      Automatyzacja krytycznych procesów*/}
+      {/*    </LandingSocialProofBandItem>*/}
+      {/*  </LandingSocialProofBand>*/}
+      {/*</section>*/}
+      
+      {/* Cennik */}
+      <section>
+        <LandingPricingSection
+          // pt0
+          title="Wybierz plan dopasowany do Twojej drukarni"
+          description="Transparentne ceny. Możliwość zmiany planu w dowolnym momencie."
+          // withBackgroundGlow
+          // backgroundGlowVariant="secondary"
+        >
+          
+        </LandingPricingSection>
+        <div className="w-full m-0 mx-auto flex justify-center items-center">
+          <Tabs defaultValue="monthly">
+            <TabsList className="justify-self-center ml-auto mr-auto block rounded-full">
+              <TabsTrigger value="monthly">Miesięcznie</TabsTrigger>
+              <TabsTrigger value="anually">Rocznie</TabsTrigger>
+            </TabsList>
+            <TabsContent value="monthly">
+              <LandingPricingSection
+                pt0
+                // title="Wybierz plan dopasowany do Twojej drukarni"
+                // description="Transparentne ceny. Możliwość zmiany planu w dowolnym momencie."
+                // withBackgroundGlow
+                // backgroundGlowVariant="secondary"
+              >
+                <LandingPricingPlan
+                  title="Professional"
+                  description="Kompletne wdrożenie dla drukarni produkcyjnych"
+                  price="1000 zł"
+                  discountPrice="800 zł"
+                  priceSuffix="/miesiąc"
+                  ctaText="Wybierz Professional"
+                  highlighted
+                >
+                  <p>Testuj przez 30 dni za darmo</p>
+                  <p>Pełny moduł fleksograficzny</p>
+                  <p>Wszystkie funkcje aplikacji</p>
+                  <p>Import listy klientów</p>
+                  <p>Wsparcie telefoniczne</p>
+                </LandingPricingPlan>
+                <LandingPricingPlan
+                  title="Enterprise"
+                  description="Indywidualne integracje i automatyzacje"
+                  price="Indywidualnie"
+                  ctaText="Skontaktuj się z nami"
+                >
+                  <p>Wszystko z planu Professional</p>
+                  <p>Integracje z maszynami przez API</p>
+                  <p>Dedykowane wdrożenia i szkolenia</p>
+                  <p>Dostosowania do procesów firmy</p>
+                  <p>Dedykowany opiekun</p>
+                </LandingPricingPlan>
+                <LandingPricingPlan
+                  title="Lifetime"
+                  description="Indywidualne integracje i automatyzacje"
+                  price="50.000 zł"
+                  discountPrice="39.000 zł"
+                  // priceSuffix="jednorazowy zakup"
+                  ctaText="Skontaktuj się z nami"
+                >
+                  <p>Wszystko z planu Professional i Enterprise</p>
+                  <p>Płacisz raz, korzystasz całe życie</p>
+                  <p>Wszystkie aktualizacje w cenie</p>
+                </LandingPricingPlan>
+              </LandingPricingSection>
+            </TabsContent>
+            <TabsContent value="anually">
+              <LandingPricingSection
+                pt0
+                // title="Wybierz plan dopasowany do Twojej drukarni"
+                // description="Transparentne ceny. Możliwość zmiany planu w dowolnym momencie."
+                // withBackgroundGlow
+                // backgroundGlowVariant="secondary"
+              >
+                <LandingPricingPlan
+                  title="Professional"
+                  description="Kompletne wdrożenie dla drukarni produkcyjnych"
+                  price="10.000 zł"
+                  discountPrice="7.000 zł"
+                  priceSuffix="/rok"
+                  ctaText="Wybierz Professional"
+                  highlighted
+                >
+                  <p>Testuj przez 30 dni za darmo</p>
+                  <p>Pełny moduł fleksograficzny</p>
+                  <p>Wszystkie funkcje aplikacji</p>
+                  <p>Import listy klientów</p>
+                  <p>Wsparcie telefoniczne</p>
+                </LandingPricingPlan>
+                <LandingPricingPlan
+                  title="Enterprise"
+                  description="Indywidualne integracje i automatyzacje"
+                  price="Indywidualnie"
+                  ctaText="Skontaktuj się z nami"
+                >
+                  <p>Wszystko z planu Professional</p>
+                  <p>Integracje z maszynami przez API</p>
+                  <p>Dedykowane wdrożenia i szkolenia</p>
+                  <p>Dostosowania do procesów firmy</p>
+                  <p>Dedykowany opiekun</p>
+                </LandingPricingPlan>
+                <LandingPricingPlan
+                  title="Lifetime"
+                  description="Indywidualne integracje i automatyzacje"
+                  price="50.000 zł"
+                  discountPrice="39.000 zł"
+                  // priceSuffix="jednorazowy zakup"
+                  ctaText="Skontaktuj się z nami"
+                >
+                  <p>Wszystko z planu Professional i Enterprise</p>
+                  <p>Płacisz raz, korzystasz całe życie</p>
+                  <p>Wszystkie aktualizacje w cenie</p>
+                </LandingPricingPlan>
+              </LandingPricingSection>
+            </TabsContent>
+          </Tabs>
+        </div>
+        
+        
+        
+      </section>
+      
+
+      {/*<section id="cennik">
+        <LandingPricingSection
+          title="Wybierz plan dopasowany do Twojej drukarni"
+          description="Transparentne ceny. Możliwość zmiany planu w dowolnym momencie."
+          pb0
+          // withBackgroundGlow
+          // backgroundGlowVariant="secondary"
+        >
+          <Tabs defaultValue="monthly">
+            <TabsList>
+              <TabsTrigger value="monthly">Miesięcznie</TabsTrigger>
+              <TabsTrigger value="anually">Rocznie</TabsTrigger>
+            </TabsList>
+            <TabsContent value="monthly">
+              <LandingPricingSection
+                pt0
+                // title="Wybierz plan dopasowany do Twojej drukarni"
+                // description="Transparentne ceny. Możliwość zmiany planu w dowolnym momencie."
+                // withBackgroundGlow
+                // backgroundGlowVariant="secondary"
+              >
+                <LandingPricingPlan
+                  title="Professional"
+                  description="Kompletne wdrożenie dla drukarni produkcyjnych"
+                  price="1000 zł"
+                  discountPrice="800 zł"
+                  priceSuffix="/miesiąc"
+                  ctaText="Wybierz Professional"
+                  highlighted
+                >
+                  <p>Testuj przez 30 dni za darmo</p>
+                  <p>Pełny moduł fleksograficzny</p>
+                  <p>Wszystkie funkcje aplikacji</p>
+                  <p>Import listy klientów</p>
+                  <p>Wsparcie telefoniczne</p>
+                </LandingPricingPlan>
+                <LandingPricingPlan
+                  title="Enterprise"
+                  description="Indywidualne integracje i automatyzacje"
+                  price="Indywidualnie"
+                  ctaText="Skontaktuj się z nami"
+                >
+                  <p>Wszystko z planu Professional</p>
+                  <p>Integracje z maszynami przez API</p>
+                  <p>Dedykowane wdrożenia i szkolenia</p>
+                  <p>Dostosowania do procesów firmy</p>
+                  <p>Dedykowany opiekun</p>
+                </LandingPricingPlan>
+                <LandingPricingPlan
+                  title="Lifetime"
+                  description="Indywidualne integracje i automatyzacje"
+                  price="50.000 zł"
+                  discountPrice="39.000 zł"
+                  // priceSuffix="jednorazowy zakup"
+                  ctaText="Skontaktuj się z nami"
+                >
+                  <p>Wszystko z planu Professional i Enterprise</p>
+                  <p>Płacisz raz, korzystasz całe życie</p>
+                  <p>Wszystkie aktualizacje w cenie</p>
+                </LandingPricingPlan>
+              </LandingPricingSection>
+            </TabsContent>
+            <TabsContent value="anually">
+              <LandingPricingSection
+                pt0
+                // title="Wybierz plan dopasowany do Twojej drukarni"
+                // description="Transparentne ceny. Możliwość zmiany planu w dowolnym momencie."
+                // withBackgroundGlow
+                // backgroundGlowVariant="secondary"
+              >
+                <LandingPricingPlan
+                  title="Professional"
+                  description="Kompletne wdrożenie dla drukarni produkcyjnych"
+                  price="10.000 zł"
+                  discountPrice="7.000 zł"
+                  priceSuffix="/rok"
+                  ctaText="Wybierz Professional"
+                  highlighted
+                >
+                  <p>Testuj przez 30 dni za darmo</p>
+                  <p>Pełny moduł fleksograficzny</p>
+                  <p>Wszystkie funkcje aplikacji</p>
+                  <p>Import listy klientów</p>
+                  <p>Wsparcie telefoniczne</p>
+                </LandingPricingPlan>
+                <LandingPricingPlan
+                  title="Enterprise"
+                  description="Indywidualne integracje i automatyzacje"
+                  price="Indywidualnie"
+                  ctaText="Skontaktuj się z nami"
+                >
+                  <p>Wszystko z planu Professional</p>
+                  <p>Integracje z maszynami przez API</p>
+                  <p>Dedykowane wdrożenia i szkolenia</p>
+                  <p>Dostosowania do procesów firmy</p>
+                  <p>Dedykowany opiekun</p>
+                </LandingPricingPlan>
+                <LandingPricingPlan
+                  title="Lifetime"
+                  description="Indywidualne integracje i automatyzacje"
+                  price="50.000 zł"
+                  discountPrice="39.000 zł"
+                  // priceSuffix="jednorazowy zakup"
+                  ctaText="Skontaktuj się z nami"
+                >
+                  <p>Wszystko z planu Professional i Enterprise</p>
+                  <p>Płacisz raz, korzystasz całe życie</p>
+                  <p>Wszystkie aktualizacje w cenie</p>
+                </LandingPricingPlan>
+              </LandingPricingSection>
+            </TabsContent>
+          </Tabs>
+  
+        </LandingPricingSection>
+        
+        
+      </section>*/}
+
+      {/* Testimonials */}
+      {/*<LandingTestimonialGrid*/}
+      {/*  title="Co mówią właściciele drukarni"*/}
+      {/*  description="Historie realnych usprawnień i oszczędności"*/}
+      {/*  testimonialItems={[*/}
+      {/*    {*/}
+      {/*      name: 'Marek Kowalski',*/}
+      {/*      handle: 'Właściciel',*/}
+      {/*      text: 'Redukcja odpadów o 20% w pierwszym miesiącu. W końcu widzimy, gdzie uciekają koszty.',*/}
+      {/*      imageSrc: 'https://picsum.photos/id/64/100/100'*/}
+      {/*    },*/}
+      {/*    {*/}
+      {/*      name: 'Anna Nowak',*/}
+      {/*      handle: 'Kierownik Produkcji',*/}
+      {/*      text: 'Statusy i formularze etapów pasują do naszego procesu. Zespół pracuje szybciej i z mniejszą liczbą błędów.',*/}
+      {/*      imageSrc: 'https://picsum.photos/id/65/100/100'*/}
+      {/*    },*/}
+      {/*    {*/}
+      {/*      name: 'Piotr Wiśniewski',*/}
+      {/*      handle: 'Dyrektor Techniczny',*/}
+      {/*      text: 'Z ofertą i kalkulatorem cen oszczędzamy dziennie godziny. Przepięcie z wyceny w produkt i zlecenie — bajka.',*/}
+      {/*      imageSrc: 'https://picsum.photos/id/669/100/100'*/}
+      {/*    }*/}
+      {/*  ]}*/}
+      {/*  withBackground*/}
+      {/*/>*/}
+
+      {/* FAQ */}
+      <section id="faq">
+        <LandingFaqCollapsibleSection
+          withBackgroundGlow
+          title="Najczęściej zadawane pytania"
+          description="Szybkie odpowiedzi na najważniejsze kwestie"
+          faqItems={[
+            {
+              question: "Czy system obsługuje wszystkie typy druku?",
+              answer: "Obecnie w pełni dostępny jest moduł fleksograficzny. Moduły do druku cyfrowego arkuszowego i rolowego są w przygotowaniu i pojawią się w kolejnych aktualizacjach."
+            },
+            {
+              question: "Czy system jest zgodny z polskimi przepisami?",
+              answer: "Tak, generowane dokumenty (WZ, faktury – wkrótce) i raporty są zgodne z obowiązującymi wymogami."
+            },
+            {
+              question: "Jak długo trwa wdrożenie?",
+              answer: "Standardowo 2–4 tygodnie, w zależności od wielkości drukarni i zakresu migracji danych. Zapewniamy wsparcie na każdym etapie."
+            },
+            {
+              question: "Czy mogę zaimportować dane z obecnego systemu?",
+              answer: "Tak — wspieramy import z popularnych systemów ERP oraz plików Excel/CSV. Pomagamy w bezpiecznej migracji."
+            },
+            {
+              question: "Jakie integracje są dostępne?",
+              answer: "Integracje z systemami księgowymi (Comarch, iFirma, Wapro), e‑commerce oraz połączenia z maszynami przez API (plan Enterprise)."
+            },
+            {
+              question: "Czy jest kontrola uprawnień?",
+              answer: "Tak. Role i uprawnienia (RBAC) pozwalają ograniczyć dostęp do funkcji i danych zgodnie z obowiązkami pracowników."
+            }
+          ]}
+          withBackground
+        />
+      </section>
+
+      {/* Bottom CTA */}
+      <section id="cta">
+        <LandingPrimaryTextCtaSection
+          title="Gotowy na pełną kontrolę nad swoją drukarnią?"
+          description="Kontroluj środki i zwiększaj zyski razem z nami!"
+          textPosition="center"
+          // effectComponent={<LandingDotParticleCtaBg />}
+          // effectComponent={<LandingGridPatternCtaBg variant="primary" />}
+          // effectComponent={<LandingFlickeringGridCtaBg variant="primary" />}
+          effectComponent={<LandingPathsCtaBg variant="primary" />}
+
+
+
+          // withBackground
+          // withBackgroundGlow
+        >
+          <Button size="xl" asChild variant="primary">
+            <a href="#trial">Testuję przez 30 dni</a>
+          </Button>
+          <Button size="xl" variant="outlinePrimary" asChild>
+            <a href="#contact">Porozmawiaj z ekspertem</a>
+          </Button>
+        </LandingPrimaryTextCtaSection>
+      </section>
+
+      {/* Newsletter */}
+      <LandingNewsletterSection
+        title="Bądź na bieżąco z rozwojem modułów"
+        description="Nowe funkcje, case studies i aktualizacje roadmapy prosto na skrzynkę."
+        buttonLabel="Zapisz się"
+        placeholderLabel="Wprowadź swój adres email"
+        withBackground
+        withAvatars
+      />
+
+      {/* Footer */}
+      <LandingFooter
+        // title="PrintFlow"
+        description="Kompleksowa platforma do zarządzania drukarnią — dziś fleksografia, jutro także cyfrowy arkusz i rola."
+        footnote={`© ${new Date().getFullYear()} PrintFlow. Wszystkie prawa zastrzeżone.`}
+        withBackgroundGlow
+        logoComponent={<Logo />}
+      >
+        <LandingFooterColumn title="Produkt">
+          <LandingFooterLink href="#moduly">Moduły</LandingFooterLink>
+          <LandingFooterLink href="#funkcje">Funkcje</LandingFooterLink>
+          <LandingFooterLink href="#cennik">Cennik</LandingFooterLink>
+          <LandingFooterLink href="#faq">FAQ</LandingFooterLink>
+        </LandingFooterColumn>
+        <LandingFooterColumn title="Wsparcie">
+          <LandingFooterLink href="#pomoc">Pomoc</LandingFooterLink>
+          <LandingFooterLink href="#dokumentacja">Dokumentacja</LandingFooterLink>
+          <LandingFooterLink href="#kontakt">Kontakt</LandingFooterLink>
+          <LandingFooterLink href="#status">Status systemu</LandingFooterLink>
+        </LandingFooterColumn>
+        <LandingFooterColumn title="Firma">
+          <LandingFooterLink href="#o-nas">O nas</LandingFooterLink>
+          <LandingFooterLink href="#blog">Blog</LandingFooterLink>
+          <LandingFooterLink href="#kariera">Kariera</LandingFooterLink>
+          <LandingFooterLink href="#partnerzy">Partnerzy</LandingFooterLink>
+        </LandingFooterColumn>
+        <LandingFooterColumn title="Prawne">
+          <LandingFooterLink href="#regulamin">Regulamin</LandingFooterLink>
+          <LandingFooterLink href="#prywatnosc">Polityka prywatności</LandingFooterLink>
+          <LandingFooterLink href="#rodo">RODO</LandingFooterLink>
+          <LandingFooterLink href="#cookies">Cookies</LandingFooterLink>
+        </LandingFooterColumn>
+      </LandingFooter>
+    </>
+  );
+}

@@ -37,7 +37,7 @@ export const LandingHeader = ({
       className={clsx(
         'flex items-center justify-between gap-6 p-4 w-full max-w-full container-narrow lg:rounded-lg',
         fixed
-          ? 'sticky top-4 left-auto right-auto z-50 bg-white/50 dark:bg-black/20 backdrop-blur-xl'
+          ? 'sticky top-0 lg:top-4 left-auto right-auto z-50 bg-white/50 dark:bg-black/20 backdrop-blur-xl'
           : '',
         withBackground ? 'lg:m-4 justify-self-center' : '',
         withBackground && variant === 'primary'

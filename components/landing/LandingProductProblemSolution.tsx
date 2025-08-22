@@ -14,7 +14,7 @@ export function LandingProductProblemSolution({
   descriptionComponent,
   problems = [],
   solutions = [],
-  solutionTitle = 'Solution',
+  solutionTitle = 'Rozwiązanie',
   solutionTitleComponent,
   problemTitle = 'Problem',
   problemTitleComponent,

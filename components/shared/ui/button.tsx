@@ -5,7 +5,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center rounded-full text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
@@ -22,7 +22,7 @@ const buttonVariants = cva(
         outlineDestructive:
           'border border-red-500 bg-background hover:bg-red-500',
         primary:
-          'bg-primary-300/70 text-primary-foreground hover:bg-primary-300/90 dark:bg-primary-700 dark:hover:bg-primary-700/90',
+          'bg-primary-600 text-white hover:bg-primary-300/90 dark:bg-primary-700 dark:hover:bg-primary-700/90',
         secondary:
           'bg-secondary-300/70 text-secondary-foreground hover:bg-secondary-300/90 dark:bg-secondary-700 dark:hover:bg-secondary-700/90',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
@@ -31,9 +31,9 @@ const buttonVariants = cva(
       },
       size: {
         default: 'h-10 px-4 py-2',
-        sm: 'h-9 rounded-md px-3',
-        lg: 'h-11 rounded-md px-8',
-        xl: 'h-12 rounded-md px-6 text-md',
+        sm: 'h-9 rounded-full px-3',
+        lg: 'h-11 rounded-full px-8',
+        xl: 'h-12 rounded-full px-6 text-md',
         icon: 'h-10 w-10',
         unsized: '',
       },

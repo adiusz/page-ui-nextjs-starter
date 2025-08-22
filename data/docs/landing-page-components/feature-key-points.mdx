@@ -1,23 +1,4 @@
----
-title: 'Landing Page Key Point'
-date: '2024-04-04'
-lastmod: '2025-06-01'
-tags:
-  - 'guide'
-  - 'components'
-  - 'documentation'
-  - 'landing-page'
-  - 'key-points'
-  - 'bullet-points'
-  - 'ui-library'
-  - 'react'
-  - 'nextjs'
-  - 'tailwind-css'
-  - 'shadcn-ui'
-  - 'shadcn-ui-bullet-points'
-  - 'shadcn-ui-key-points'
-
-summary: 'A component meant to be used in the landing page. This component displays bullet points (key features) in the description of LandingProductFeature.'
+import { LandingGridPatternCtaBg } from "../../../components/landing";summary: 'A component meant to be used in the landing page. This component displays bullet points (key features) in the description of LandingProductFeature.'
 layout: PostHub
 
 showThemeSelector: true
@@ -140,6 +121,7 @@ import { LandingProductFeatureKeyPoints } from '@/components/landing/LandingProd
         />
       }
       imageSrc="/static/images/shipixen/product/1.webp"
+      effectComponent={<LandingGridPatternCtaBg variant="primary" />}
       imageAlt="Sample image"
     >
       <Button size="xl" asChild>

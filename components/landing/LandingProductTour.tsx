@@ -18,6 +18,8 @@ interface LandingProductTourProps
   withBackgroundGlow?: boolean;
   variant?: 'primary' | 'secondary';
   backgroundGlowVariant?: 'primary' | 'secondary';
+  pt0?: boolean;
+  pb0?: boolean;
 }
 
 const LandingProductTourSection = React.forwardRef<
@@ -35,6 +37,8 @@ const LandingProductTourSection = React.forwardRef<
       withBackgroundGlow = false,
       variant = 'primary',
       backgroundGlowVariant = 'primary',
+      pt0,
+      pb0,
       ...props
     },
     ref,
@@ -50,6 +54,8 @@ const LandingProductTourSection = React.forwardRef<
           : '',
         withBackgroundGlow ? 'relative overflow-hidden' : '',
         className,
+        pt0 && "!pt-0",
+        pb0 && "!pb-0",
       )}
     >
       {withBackgroundGlow ? (
