@@ -1,40 +1,34 @@
-import { Users2, Package, Image as ImageIcon, Calculator, Paperclip, ChartPie, Layers, Workflow, ShieldCheck, Rocket, Loader2, Route, Warehouse } from "lucide-react";
-import { LandingHeader } from "@/components/landing/navigation/LandingHeader";
-import { LandingHeaderMenuItem } from "@/components/landing/navigation/LandingHeaderMenuItem";
-import { LandingPrimaryImageCtaSection, LandingPrimaryTextCtaSection } from "@/components/landing/cta/LandingPrimaryCta";
-import { LandingProductFeaturesGrid } from "@/components/landing/LandingProductFeaturesGrid";
-import { LandingProductFeature } from "@/components/landing/LandingProductFeature";
-import { LandingProductSteps } from "@/components/landing/LandingProductSteps";
-import { LandingPricingSection } from "@/components/landing/pricing/LandingPricingSection";
-import { LandingPricingPlan } from "@/components/landing/pricing/LandingPricingPlan";
-import { LandingTestimonialGrid } from "@/components/landing/testimonial/LandingTestimonialGrid";
-import { LandingSocialProofBand } from "@/components/landing/social-proof/LandingSocialProofBand";
-import { LandingSocialProofBandItem } from "@/components/landing/social-proof/LandingSocialProofBandItem";
-import { LandingNewsletterSection } from "@/components/landing/newsletter/LandingNewsletterSection";
-import Image from "next/image";
+"use client";
+
+import ProductTour from "@/app/components/product-tour";
 import {
-  Button
-} from "@/components/shared/ui/button";
-import {
-  LandingAboutSection, LandingDiscount, LandingDotParticleCtaBg, LandingFaqCollapsibleSection,
-  LandingFaqSection,
-  LandingFeatureList, LandingFlickeringGridCtaBg,
-  LandingFlyingParticleCtaBg,
+  LandingDiscount,
+  LandingFaqCollapsibleSection,
+  LandingFeatureList,
   LandingFooter,
   LandingFooterColumn,
-  LandingFooterLink,
-  LandingGridPatternCtaBg, LandingMarquee, LandingPathsCtaBg,
-  LandingProblemAgitator,
-  LandingProblemAgitatorComment,
-  LandingProblemAgitatorItem, LandingProductFeatureKeyPoints, LandingProductProblemSolution, LandingProductTourContent, LandingProductTourList, LandingProductTourSection, LandingProductTourTrigger,
-  LandingShapesCtaBg, LandingShowcase,
-  LandingStatsSection,
+  LandingFooterLink, LandingGridPatternCtaBg, LandingLeadingPill,
+  LandingPathsCtaBg,
   LandingWavesCtaBg
 } from "@/components/landing";
+import { LandingPrimaryImageCtaSection, LandingPrimaryTextCtaSection } from "@/components/landing/cta/LandingPrimaryCta";
+import { LandingProductFeature } from "@/components/landing/LandingProductFeature";
+import { LandingProductFeaturesGrid } from "@/components/landing/LandingProductFeaturesGrid";
+import { LandingProductSteps } from "@/components/landing/LandingProductSteps";
+import { LandingHeader } from "@/components/landing/navigation/LandingHeader";
+import { LandingHeaderMenuItem } from "@/components/landing/navigation/LandingHeaderMenuItem";
+import { LandingNewsletterSection } from "@/components/landing/newsletter/LandingNewsletterSection";
+import { LandingPricingPlan } from "@/components/landing/pricing/LandingPricingPlan";
+import { LandingPricingSection } from "@/components/landing/pricing/LandingPricingSection";
 import Logo from "@/components/logo";
-import { VideoPlayer } from "@/components/shared/VideoPlayer";
-import ProductTour from "@/app/components/product-tour";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/shared/ui/tabs";
+import {
+    Button
+} from "@/components/shared/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/shared/ui/tabs";
+import ShinyText from "@/src/components/ShinyText/ShinyText";
+import TextType from "@/src/components/TextType/TextType";
+import { Bell, Calculator, Check, Image as ImageIcon, Lightbulb, Loader, Package, Route, Users2, Warehouse } from "lucide-react";
+import RotatingText from "@/src/components/RotatingText/RotatingText";
 
 export default function V1() {
   return (
@@ -73,8 +67,36 @@ export default function V1() {
 
       {/* Hero Section */}
       <LandingPrimaryImageCtaSection
-        title="Kompleksowe zarządzanie drukarnią w jednym miejscu"
-        description="PrintFlow to nowoczesna platforma online do prowadzenia drukarni fleksograficznych. Odzyskaj kontrolę nad odpadami, marżą, produktami, zleceniami, dokumentami. Analizuj kluczowe dane."
+        title={<>
+          <TextType
+            text={["Kompleksowe zarządzanie drukarnią w jednym miejscu"]}
+            typingSpeed={20}
+            pauseDuration={1500}
+            showCursor={false}
+            cursorCharacter="|"
+          />
+        </>}
+
+        description={
+          <>
+            <span>PrintFlow to nowoczesna platforma online do prowadzenia drukarni fleksograficznych. Odzyskaj kontrolę nad</span>
+            {/*odpadami, marżą, produktami, zleceniami, dokumentami. Analizuj kluczowe dane.*/}
+            <RotatingText
+              texts={["odpadami.", "marżą.", "produktami.", "zleceniami.", "dokumentami."]}
+              mainClassName="inline-flex w-[150px] justify-start px-[4px] bg-transparent text-primary-600 font-bold overflow-hidden py-0.5 sm:py-0.5 md:py-0.5 rounded-lg"
+              staggerFrom={"last"}
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-120%" }}
+              staggerDuration={0.025}
+              splitLevelClassName="overflow-hidden "
+              transition={{ type: "spring", damping: 30, stiffness: 400 }}
+              rotationInterval={1500}
+            />
+            <br />
+            <span>Analizuj kluczowe dane. Podejmuj lepsze decyzje.</span>
+          </>
+        }
         imageSrc="/app_mock_desktop.png"
         imageAlt="PrintFlow app"
         imagePosition="center"
@@ -82,11 +104,15 @@ export default function V1() {
         minHeight={500}
         // minHeight={1000}
         // effectComponent={<LandingShapesCtaBg />}
-        effectComponent={<LandingWavesCtaBg variant="primary" />}
+        // effectComponent={<LandingWavesCtaBg variant="hero" />}
+        effectComponent={<LandingGridPatternCtaBg variant="hero" />}
 
       >
+
         <Button size="xl" asChild variant="primary">
-          <a href="#trial">Wypróbuj</a>
+          <a href="#trial">
+            Wypróbuj
+          </a>
         </Button>
         <Button size="xl" variant="outlinePrimary" asChild>
           <a href="#demo">Zobacz demo</a>
@@ -111,17 +137,17 @@ export default function V1() {
           featureItems={[
             {
               title: "Klienci i maszyny",
-              description: "Pełna baza klientów oraz rejestr maszyn.",
+              description: "Pełna baza Klientów, z przypisanmi Produktami oraz Zleceniami, a także rejestr maszyn.",
               icon: <Users2 className="w-6 h-6" />
             },
             {
               title: "Produkty i komponenty",
-              description: "Produkty ze specyfikacją: wykrojniki, kolory, materiały, podglądy, aniloksy i inne parametry techniczne.",
+              description: "Produkty ze specyfikacją: wykrojniki, kolory, materiały, podglądy i inne parametry techniczne.",
               icon: <ImageIcon className="w-6 h-6" />
             },
             {
               title: "Zlecenia z etapami produkcji",
-              description: "4 statusy procesu, dedykowane formularze, zgłaszanie uszkodzonych polimerów i użycia innych kolorów.",
+              description: "Dedykowane formularze, zgłaszanie uszkodzonych polimerów i użycia innych kolorów.",
               icon: <Package className="w-6 h-6" />
             },
             // {
@@ -167,10 +193,15 @@ export default function V1() {
               description: "Stany magazynowe nie zawsze się zgadzają? Sprawdzaj kto i kiedy wydał oraz odebrał materiał.",
               icon: <Warehouse className="w-6 h-6" />
             },
+            // {
+            //   title: "Sprawdzaj kto i kiedy pracował nad danym Zleceniem",
+            //   description: "Od momentu wydania materiału, przez drukowanie po przetwarzanie. Wszystko w jednym miejscu.",
+            //   icon: <Route className="w-6 h-6" />
+            // },
             {
-              title: "Sprawdzaj kto i kiedy pracował nad danym Zleceniem",
-              description: "Od momentu wydania materiału, przez drukowanie po przetwarzanie. Wszystko w jednym miejscu.",
-              icon: <Route className="w-6 h-6" />
+              title: "Bądź na bieżąco dzięki Powiadomieniom",
+              description: "Zmiana statusu zamówienia? Zgłoszone uwagi? Problemy techniczne? Twoim pracownikom nic nie umknie.",
+              icon: <Bell className="w-6 h-6" />
             },
             // {
             //   title: "System wycen i kalkulatorów",
@@ -195,12 +226,15 @@ export default function V1() {
       <section id="jak-dziala">
         <LandingProductSteps
           title="Jak to działa — w 4 prostych krokach"
-          description="Zarejestruj się i sprawdź. Założenie konta zajmuje 3 minuty!"
+          description={<>
+            <a className="text-primary-600 underline" href="">Zarejestruj się</a>
+            <span> i sprawdź. Założenie konta zajmuje 3 minuty!</span>
+          </>}
           // withBackground
         >
           <LandingProductFeature
             title="Dodaj pirewszego Klienta"
-            description={`Wypełnij formularz i kliknij "Dodaj". Jeśli chicałbyś zaimportować instniejącą listę Klientów (np. z pliku CSV), pomożemy w tym procesie!`}
+            description={`Wypełnij dane i dodaj Klienta. Jeśli chicałbyś zaimportować instniejącą listę Klientów (np. z pliku CSV), pomożemy w tym procesie!`}
             imageSrc="/add_client_desktop.png"
             imageAlt="Dodawanie Klienta"
           />
@@ -212,7 +246,7 @@ export default function V1() {
           />*/}
           <LandingProductFeature
             title="Wybierz Klienta, a następnie dodaj Produkt"
-            description={`Stwórz wszystkie komponenty Produktu, pozostając na tej samej stronie i kliknij "Dodaj". Produkt stworzony i przypisany do wybranego Klienta.`}
+            description={`Stwórz wszystkie komponenty Produktu, pozostając na tej samej stronie i zapisz. Produkt stworzony i przypisany do wybranego Klienta.`}
             imageSrc="/add_product_desktop.png"
             imageAlt="Dodawanie Produktu"
           />
@@ -295,25 +329,66 @@ export default function V1() {
       <section id="moduly">
         <LandingProductFeaturesGrid
           title="Trzy moduły — jeden ekosystem"
-          description="Korzystaj już dziś z pełnego modułu fleksograficznego. Moduły cyfrowe w przygotowaniu."
-          withBackground
+          // description="Korzystaj już dziś z pełnego modułu fleksograficznego. Moduły cyfrowe w przygotowaniu."
+          withBackgroundGlow
         >
           <LandingProductFeature
             title="Fleksografia"
-            description="Kompletny, działający moduł: 5 statusów zlecenia, wydania i zwroty materiałów ze Sklepu/Magazynu, rejestr odpadów, zgłaszanie uszkodzonych polimerów, praca na kolorach, częściowy druk, pełna historia operacji."
-            imageSrc="https://picsum.photos/seed/flexo/500/320"
+            description={<>
+              {/*<span>Kompletny, działający moduł: 5 statusów zlecenia, wydania i zwroty materiałów ze Sklepu/Magazynu, rejestr odpadów, zgłaszanie uszkodzonych polimerów, praca na kolorach, częściowy druk, pełna historia operacji.</span>*/}
+              <div className="rounded-full mt-[-20px] border-green-500 border !text-black flex">
+                <LandingLeadingPill
+                  borderVariant="primary"
+                  // textVariant="primary"
+                >
+                  <div className="flex items-center">
+                    <Check className="text-green-500 w-4 h-4 mr-1"/>
+                    <span>Dostępny</span>
+                  </div>
+                </LandingLeadingPill>
+              </div>
+            </>}
+            imageSrc="/module_f.png"
             imageAlt="Moduł fleksograficzny"
           />
           <LandingProductFeature
-            title="Cyfrowy arkusz (w przygotowaniu)"
-            description="Planowane: konfiguracja pod digital sheet, uproszczone statusy, kalkulacje kosztowe dla krótkich serii, integracje z RIP/DFE."
-            imageSrc="https://picsum.photos/seed/sheet/500/320"
+            title="Cyfrowy arkusz"
+            // description="Planowane: konfiguracja pod digital sheet, uproszczone statusy, kalkulacje kosztowe dla krótkich serii, integracje z RIP/DFE."
+            description={<>
+              {/*<span>Kompletny, działający moduł: 5 statusów zlecenia, wydania i zwroty materiałów ze Sklepu/Magazynu, rejestr odpadów, zgłaszanie uszkodzonych polimerów, praca na kolorach, częściowy druk, pełna historia operacji.</span>*/}
+              <div className="rounded-full mt-[-20px] border-yellow-500 border !text-black flex">
+                <LandingLeadingPill
+                  borderVariant="primary"
+                  // textVariant="primary"
+                >
+                  <div className="flex items-center">
+                    <Loader className="text-yellow-500 w-4 h-4 mr-1"/>
+                    <span>Budowany</span>
+                  </div>
+                </LandingLeadingPill>
+              </div>
+            </>}
+            imageSrc="/module_ds.png"
             imageAlt="Moduł cyfrowy arkusz"
           />
           <LandingProductFeature
-            title="Cyfrowy rolowy (w przygotowaniu)"
-            description="Planowane: parametry roli, przebieg pracy inline, automatyzacja przeliczeń materiałowych i rozliczeń wolumenu."
-            imageSrc="https://picsum.photos/seed/web/500/320"
+            title="Cyfrowy rolowy"
+            // description="Planowane: parametry roli, przebieg pracy inline, automatyzacja przeliczeń materiałowych i rozliczeń wolumenu."
+            description={<>
+              {/*<span>Kompletny, działający moduł: 5 statusów zlecenia, wydania i zwroty materiałów ze Sklepu/Magazynu, rejestr odpadów, zgłaszanie uszkodzonych polimerów, praca na kolorach, częściowy druk, pełna historia operacji.</span>*/}
+              <div className="rounded-full mt-[-20px] border-gray-500 border !text-black flex">
+                <LandingLeadingPill
+                  borderVariant="primary"
+                  // textVariant="primary"
+                >
+                  <div className="flex items-center">
+                    <Lightbulb className="text-gray-500 w-4 h-4 mr-1"/>
+                    <span>Planowany</span>
+                  </div>
+                </LandingLeadingPill>
+              </div>
+            </>}
+            imageSrc="/module_dw.png"
             imageAlt="Moduł cyfrowy rolowy"
           />
         </LandingProductFeaturesGrid>
@@ -570,7 +645,7 @@ export default function V1() {
       {/*    </LandingSocialProofBandItem>*/}
       {/*  </LandingSocialProofBand>*/}
       {/*</section>*/}
-      
+
       {/* Cennik */}
       <section>
         <LandingPricingSection
@@ -580,7 +655,7 @@ export default function V1() {
           // withBackgroundGlow
           // backgroundGlowVariant="secondary"
         >
-          
+
         </LandingPricingSection>
         <div className="w-full m-0 mx-auto flex justify-center items-center">
           <Tabs defaultValue="monthly">
@@ -688,11 +763,11 @@ export default function V1() {
             </TabsContent>
           </Tabs>
         </div>
-        
-        
-        
+
+
+
       </section>
-      
+
 
       {/*<section id="cennik">
         <LandingPricingSection
@@ -806,10 +881,10 @@ export default function V1() {
               </LandingPricingSection>
             </TabsContent>
           </Tabs>
-  
+
         </LandingPricingSection>
-        
-        
+
+
       </section>*/}
 
       {/* Testimonials */}
@@ -856,15 +931,15 @@ export default function V1() {
             },
             {
               question: "Jak długo trwa wdrożenie?",
-              answer: "Standardowo 2–4 tygodnie, w zależności od wielkości drukarni i zakresu migracji danych. Zapewniamy wsparcie na każdym etapie."
+              answer: `Założenie konta zajmuje 3 minuty. Utworzenie pierwszego ~lecenia nie powinno zająć dłużej niż 15 minut. Cała aplikacja jest bardzo intuicyjna oraz cały czas "prowadzi za rękę" gwarantując spójność zapisywanych danych. `
             },
             {
               question: "Czy mogę zaimportować dane z obecnego systemu?",
-              answer: "Tak — wspieramy import z popularnych systemów ERP oraz plików Excel/CSV. Pomagamy w bezpiecznej migracji."
+              answer: "Obecnie możliwość ta jest dostępna tylko dla płacących klientów i usługę tę wykonujemy indywidualnie, pozostając w kontakcie z Państwem."
             },
             {
               question: "Jakie integracje są dostępne?",
-              answer: "Integracje z systemami księgowymi (Comarch, iFirma, Wapro), e‑commerce oraz połączenia z maszynami przez API (plan Enterprise)."
+              answer: "Dla indywidualnych Klientów, oferujemy integrację systemu PrintFlow z zewnętrznym API maszyny. W przyszłości planujemy dodać integrację z systemami księgowymi."
             },
             {
               question: "Czy jest kontrola uprawnień?",

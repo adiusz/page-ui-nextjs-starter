@@ -12,7 +12,7 @@ export const LandingGridPatternCtaBg = ({
   gridSize = 'medium',
 }: {
   className?: string;
-  variant?: 'default' | 'primary' | 'secondary';
+  variant?: 'default' | 'primary' | 'secondary' | 'hero'
   enableMouseTracking?: boolean;
   gridSize?: 'small' | 'medium' | 'large' | 'xlarge' | number;
 }) => {
@@ -83,6 +83,10 @@ export const LandingGridPatternCtaBg = ({
           .trim();
         return convertToRgba({ color: secondaryColor, opacity: 0.2 });
       }
+      case 'hero' : {
+        return convertToRgba({ color: "#2c80ff", opacity: 0.4 });
+      }
+
       default:
         return 'rgba(200, 200, 200, 0.2)';
     }
@@ -122,7 +126,9 @@ export const LandingGridPatternCtaBg = ({
         aria-hidden="true"
       />
       <div
-        className={clsx('absolute inset-0', gradientOverlay)}
+        className={clsx('absolute inset-0',
+          // gradientOverlay
+        )}
         aria-hidden="true"
       />
     </div>

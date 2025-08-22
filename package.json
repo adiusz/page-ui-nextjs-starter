@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",
@@ -39,21 +38,24 @@
     "@tailwindcss/typography": "^0.5.13",
     "@vercel/speed-insights": "^1.2.0",
     "chroma-js": "^3.1.2",
-    "class-variance-authority": "^0.7.0",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.23.12",
+    "gsap": "^3.13.0",
     "lucide-react": "^0.416.0",
     "monaco-editor": "^0.52.2",
+    "motion": "^12.23.12",
     "next": "14.2.5",
+    "ogl": "^1.0.11",
     "react": "^18",
     "react-day-picker": "^9.8.1",
     "react-dom": "^18",
     "react-hook-form": "^7.62.0",
     "react-resizable-panels": "^3.0.4",
     "sonner": "^2.0.7",
-    "tailwind-merge": "^2.4.0",
+    "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^1.1.2"
   },

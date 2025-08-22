@@ -36,7 +36,7 @@ export const LandingPathsCtaBg = ({
           .getPropertyValue('--primary-main')
           .trim();
         newStrokeColor =
-          convertToRgba({ color: primaryMain, opacity: 0.5 }) ||
+          convertToRgba({ color: "#2c80ff", opacity: 0.3 }) ||
           'rgba(100, 100, 100, 0.5)';
         break;
       }

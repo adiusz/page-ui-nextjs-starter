@@ -329,7 +329,7 @@ export const LandingLeadingPill = ({
       <motion.div
         ref={containerRef}
         className={clsx(
-          'inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium relative',
+          'inline-flex items-center justify-center gap-2 px-4 py-0.5 rounded-full text-sm font-medium relative',
           withBackground && backgroundVariantClasses[backgroundVariant],
           textVariantClasses[textVariant],
           hoverClasses,

@@ -53,7 +53,7 @@ const ProductTour = () => {
     {
       value: "step-6",
       title: "Wygoda",
-      description: "Chcesz dodać Zlecenie dla nowego Klienta? Koniec z przeklikiwaniem się po różnych rejonach aplikacji — w PrintFlow stworzysz wszystko z okienka",
+      description: "Chcesz dodać Zlecenie dla nowego Klienta? Koniec z przeklikiwaniem się po różnych rejonach aplikacji — w PrintFlow stworzysz wszystko w jednym miejscu!",
       src: "/add_order_from_quote.png",
       alt: "Dodawanie Zlecenia"
     },
@@ -67,7 +67,7 @@ const ProductTour = () => {
     {
       value: "step-8",
       title: "Personalizacja",
-      description: "Przełączaj się między trybem jasnym a ciemnym. Nie podoba Ci się niebieski? Zmień go na jeden z szcześciu dostępnych kolorów przewodnich.",
+      description: "Przełączaj się między trybem jasnym a ciemnym. Nie podoba Ci się kolor? Zmień go na jeden z szcześciu dostępnych kolorów przewodnich.",
       src: "/customization.png",
       alt: "Dodawanie Zlecenia"
     },

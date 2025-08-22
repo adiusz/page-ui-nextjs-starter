@@ -128,7 +128,7 @@ export const LandingWavesCtaBg = ({
   yGap = 32,
 }: {
   className?: string;
-  variant?: 'default' | 'primary' | 'secondary';
+  variant?: 'default' | 'primary' | 'secondary' | 'hero';
   waveSpeedX?: number;
   waveSpeedY?: number;
   waveAmpX?: number;
@@ -168,6 +168,12 @@ export const LandingWavesCtaBg = ({
           .trim();
         lineColor =
           convertToRgba({ color: secondaryMain, opacity: 0.5 }) ||
+          'rgba(100, 100, 100, 0.5)';
+        break;
+      }
+      case 'hero' : {
+        lineColor =
+          convertToRgba({ color: "#2c80ff", opacity: 0.3 }) ||
           'rgba(100, 100, 100, 0.5)';
         break;
       }
