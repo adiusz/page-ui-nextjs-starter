@@ -133,9 +133,13 @@ export const LandingProductFeature = ({
             </h2>
           ))}
 
-          {descriptionComponent || (description && (
+          {(description && (
             <p className="mt-4 md:text-xl">{description}</p>
           ))}
+
+          {descriptionComponent && (
+            descriptionComponent
+          )}
 
           {children}
         </div>

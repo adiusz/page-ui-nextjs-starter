@@ -8,7 +8,7 @@ import {
   LandingFooter,
   LandingFooterColumn,
   LandingFooterLink, LandingGridPatternCtaBg, LandingLeadingPill,
-  LandingPathsCtaBg,
+  LandingPathsCtaBg, LandingPrimaryVideoCtaSection,
   LandingWavesCtaBg
 } from "@/components/landing";
 import { LandingPrimaryImageCtaSection, LandingPrimaryTextCtaSection } from "@/components/landing/cta/LandingPrimaryCta";
@@ -29,8 +29,20 @@ import ShinyText from "@/src/components/ShinyText/ShinyText";
 import TextType from "@/src/components/TextType/TextType";
 import { Bell, Calculator, Check, Image as ImageIcon, Lightbulb, Loader, Package, Route, Users2, Warehouse } from "lucide-react";
 import RotatingText from "@/src/components/RotatingText/RotatingText";
+import { useEffect, useId, useRef, useState } from "react";
+
+const IS_DEV = false;
+const LOGIN_URL = IS_DEV ? `http://localhost:3000/login` : `${process.env.NEXT_PUBLIC_APP_URL}/login`;
+const REGISTER_URL = IS_DEV ? `http://localhost:3000/register` : `${process.env.NEXT_PUBLIC_APP_URL}/register`
+
+const copy = {
+  // h1: "Zarządzanie drukarnią oparte na danych, nie domysłach"
+  h1: "Zwiększ zyski swojej drukarni o 30% dzięki kontroli odpadów"
+}
 
 export default function V1() {
+  const [isPlaying, setIsPlaying] = useState(false);
+
   return (
     <>
       {/* Header */}
@@ -45,31 +57,23 @@ export default function V1() {
         <LandingHeaderMenuItem href="#cennik" label="Cennik" />
         <LandingHeaderMenuItem href="#faq" label="FAQ" />
         <LandingHeaderMenuItem
-          href=""
+          href={LOGIN_URL}
           label="Logowanie"
           type="button"
           variant="outlinePrimary"
         />
         <LandingHeaderMenuItem
-          href="#cta"
+          href={REGISTER_URL}
           label="Rozpocznij za darmo"
           type="button"
         />
       </LandingHeader>
 
-      {/*<LandingAboutSection*/}
-      {/*  title="PrintFlow to aplikacja do zarzązdania drukarnią"*/}
-      {/*  description="We are committed to creating a safe and supportive environment where you can explore your thoughts and feelings, develop coping strategies, and achieve your mental health goals."*/}
-      {/*  imageSrc="/app_mock_desktop.png"*/}
-      {/*  imageAlt="About us image"*/}
-      {/*  // effectComponent={<LandingShapesCtaBg />}*/}
-      {/*/>*/}
-
       {/* Hero Section */}
-      <LandingPrimaryImageCtaSection
+      <LandingPrimaryVideoCtaSection
         title={<>
           <TextType
-            text={["Kompleksowe zarządzanie drukarnią w jednym miejscu"]}
+          text={[copy.h1]}
             typingSpeed={20}
             pauseDuration={1500}
             showCursor={false}
@@ -97,10 +101,13 @@ export default function V1() {
             <span>Analizuj kluczowe dane. Podejmuj lepsze decyzje.</span>
           </>
         }
-        imageSrc="/app_mock_desktop.png"
-        imageAlt="PrintFlow app"
-        imagePosition="center"
+        videoPoster="/app_mock_desktop.png"
+        videoSrc="https://cache.shipixen.com/features/8-customize-pages.mp4"
+        // imageAlt="PrintFlow app"
+        startPlay={isPlaying}
         textPosition="center"
+        videoPosition="center"
+        videoShadow="soft"
         minHeight={500}
         // minHeight={1000}
         // effectComponent={<LandingShapesCtaBg />}
@@ -110,12 +117,12 @@ export default function V1() {
       >
 
         <Button size="xl" asChild variant="primary">
-          <a href="#trial">
+          <a href={REGISTER_URL}>
             Wypróbuj
           </a>
         </Button>
-        <Button size="xl" variant="outlinePrimary" asChild>
-          <a href="#demo">Zobacz demo</a>
+        <Button size="xl" variant="outlinePrimary" onClick={() => setIsPlaying(true)}>
+          <span>Zobacz demo</span>
         </Button>
 
         <LandingDiscount
@@ -124,12 +131,12 @@ export default function V1() {
           discountDescriptionText="*Karta kredytowa nie jest wymagana."
 
         />
-      </LandingPrimaryImageCtaSection>
+      </LandingPrimaryVideoCtaSection>
 
       <ProductTour />
 
       {/* Feature List (dopasowane do funkcji) */}
-      <section id="funkcje">
+      <section id={`${useId()}_features`}>
         <LandingFeatureList
           // withBackground
           title="Wszystko, czego potrzebujesz w jednej platformie"
@@ -150,31 +157,6 @@ export default function V1() {
               description: "Dedykowane formularze, zgłaszanie uszkodzonych polimerów i użycia innych kolorów.",
               icon: <Package className="w-6 h-6" />
             },
-            // {
-            //   title: "Pełna ścieżka audytu: kto, co, ile i kiedy",
-            //   description: "",
-            //   icon: <Route className="w-6 h-6" />
-            // },
-            // {
-            //   title: "Kontrola przekazań i zwrotów materiałów",
-            //   description: "",
-            //   icon: <Warehouse className="w-6 h-6" />
-            // },
-            // {
-            //   title: "System wycen i kalkulatorów",
-            //   description: "Kalkulator marży i kosztów pozwala tworzyć Wyceny, na podstawie których stworzysz Produkt i Zlecenie. Wszystko z jednego okna!",
-            //   icon: <Calculator className="w-6 h-6" />
-            // },
-            // {
-            //   title: "Dokumenty WZ",
-            //   description: "Generuj dokumenty WZ (PDF/druk z przeglądarki). Faktury — wkrótce.",
-            //   icon: <Paperclip className="w-6 h-6" />
-            // },
-            // {
-            //   title: "Analityka i wydajność",
-            //   description: "Wykresy efektywności pracowników, odpady, historia operacji.",
-            //   icon: <ChartPie className="w-6 h-6" />
-            // }
           ]}
         />
         <LandingFeatureList
@@ -203,21 +185,6 @@ export default function V1() {
               description: "Zmiana statusu zamówienia? Zgłoszone uwagi? Problemy techniczne? Twoim pracownikom nic nie umknie.",
               icon: <Bell className="w-6 h-6" />
             },
-            // {
-            //   title: "System wycen i kalkulatorów",
-            //   description: "Kalkulator marży i kosztów pozwala tworzyć Wyceny, na podstawie których stworzysz Produkt i Zlecenie. Wszystko z jednego okna!",
-            //   icon: <Calculator className="w-6 h-6" />
-            // },
-            // {
-            //   title: "Dokumenty WZ",
-            //   description: "Generuj dokumenty WZ (PDF/druk z przeglądarki). Faktury — wkrótce.",
-            //   icon: <Paperclip className="w-6 h-6" />
-            // },
-            // {
-            //   title: "Analityka i wydajność",
-            //   description: "Wykresy efektywności pracowników, odpady, historia operacji.",
-            //   icon: <ChartPie className="w-6 h-6" />
-            // }
           ]}
         />
       </section>
@@ -227,7 +194,7 @@ export default function V1() {
         <LandingProductSteps
           title="Jak to działa — w 4 prostych krokach"
           description={<>
-            <a className="text-primary-600 underline" href="">Zarejestruj się</a>
+            <a className="text-primary-600 underline" href={REGISTER_URL}>Zarejestruj się</a>
             <span> i sprawdź. Założenie konta zajmuje 3 minuty!</span>
           </>}
           // withBackground
@@ -238,12 +205,6 @@ export default function V1() {
             imageSrc="/add_client_desktop.png"
             imageAlt="Dodawanie Klienta"
           />
-          {/*<LandingProductFeature
-            title="Stwórz konta pracowników"
-            description="Podaj login lub email, określ Rolę, wygeneruj hasło, a skopiowane do schowka dane logowania prześlij pracownikowi."
-            imageSrc="/add_user_desktop.png"
-            imageAlt="Tworzenie konta pracownika"
-          />*/}
           <LandingProductFeature
             title="Wybierz Klienta, a następnie dodaj Produkt"
             description={`Stwórz wszystkie komponenty Produktu, pozostając na tej samej stronie i zapisz. Produkt stworzony i przypisany do wybranego Klienta.`}
@@ -262,12 +223,7 @@ export default function V1() {
             imageSrc="/orders_desktop.png"
             imageAlt="Zarządzanie zleceniami"
           />
-          {/*<LandingProductFeature*/}
-          {/*  title="Analizuj wyniki"*/}
-          {/*  description="Raporty efektywności, odpady i historia — podejmuj decyzje na podstawie danych."*/}
-          {/*  imageSrc="https://picsum.photos/seed/step4/500/320"*/}
-          {/*  imageAlt="Monitorowanie wyników"*/}
-          {/*/>*/}
+
         </LandingProductSteps>
       </section>
 
@@ -333,10 +289,10 @@ export default function V1() {
           withBackgroundGlow
         >
           <LandingProductFeature
-            title="Fleksografia"
-            description={<>
+            title="Fleksograficzny"
+            descriptionComponent={<>
               {/*<span>Kompletny, działający moduł: 5 statusów zlecenia, wydania i zwroty materiałów ze Sklepu/Magazynu, rejestr odpadów, zgłaszanie uszkodzonych polimerów, praca na kolorach, częściowy druk, pełna historia operacji.</span>*/}
-              <div className="rounded-full mt-[-20px] border-green-500 border !text-black flex">
+              <div className="rounded-full mt-[-14px] border-green-500 border !text-black flex">
                 <LandingLeadingPill
                   borderVariant="primary"
                   // textVariant="primary"
@@ -352,11 +308,11 @@ export default function V1() {
             imageAlt="Moduł fleksograficzny"
           />
           <LandingProductFeature
-            title="Cyfrowy arkusz"
+            title="Cyfra arkuszowa"
             // description="Planowane: konfiguracja pod digital sheet, uproszczone statusy, kalkulacje kosztowe dla krótkich serii, integracje z RIP/DFE."
-            description={<>
+            descriptionComponent={<>
               {/*<span>Kompletny, działający moduł: 5 statusów zlecenia, wydania i zwroty materiałów ze Sklepu/Magazynu, rejestr odpadów, zgłaszanie uszkodzonych polimerów, praca na kolorach, częściowy druk, pełna historia operacji.</span>*/}
-              <div className="rounded-full mt-[-20px] border-yellow-500 border !text-black flex">
+              <div className="rounded-full mt-[-14px] border-yellow-500 border !text-black flex">
                 <LandingLeadingPill
                   borderVariant="primary"
                   // textVariant="primary"
@@ -372,11 +328,11 @@ export default function V1() {
             imageAlt="Moduł cyfrowy arkusz"
           />
           <LandingProductFeature
-            title="Cyfrowy rolowy"
+            title="Cyfra rolowa"
             // description="Planowane: parametry roli, przebieg pracy inline, automatyzacja przeliczeń materiałowych i rozliczeń wolumenu."
-            description={<>
+            descriptionComponent={<>
               {/*<span>Kompletny, działający moduł: 5 statusów zlecenia, wydania i zwroty materiałów ze Sklepu/Magazynu, rejestr odpadów, zgłaszanie uszkodzonych polimerów, praca na kolorach, częściowy druk, pełna historia operacji.</span>*/}
-              <div className="rounded-full mt-[-20px] border-gray-500 border !text-black flex">
+              <div className="rounded-full mt-[-14px] border-gray-500 border !text-black flex">
                 <LandingLeadingPill
                   borderVariant="primary"
                   // textVariant="primary"
@@ -655,7 +611,6 @@ export default function V1() {
           // withBackgroundGlow
           // backgroundGlowVariant="secondary"
         >
-
         </LandingPricingSection>
         <div className="w-full m-0 mx-auto flex justify-center items-center">
           <Tabs defaultValue="monthly">
@@ -768,152 +723,6 @@ export default function V1() {
 
       </section>
 
-
-      {/*<section id="cennik">
-        <LandingPricingSection
-          title="Wybierz plan dopasowany do Twojej drukarni"
-          description="Transparentne ceny. Możliwość zmiany planu w dowolnym momencie."
-          pb0
-          // withBackgroundGlow
-          // backgroundGlowVariant="secondary"
-        >
-          <Tabs defaultValue="monthly">
-            <TabsList>
-              <TabsTrigger value="monthly">Miesięcznie</TabsTrigger>
-              <TabsTrigger value="anually">Rocznie</TabsTrigger>
-            </TabsList>
-            <TabsContent value="monthly">
-              <LandingPricingSection
-                pt0
-                // title="Wybierz plan dopasowany do Twojej drukarni"
-                // description="Transparentne ceny. Możliwość zmiany planu w dowolnym momencie."
-                // withBackgroundGlow
-                // backgroundGlowVariant="secondary"
-              >
-                <LandingPricingPlan
-                  title="Professional"
-                  description="Kompletne wdrożenie dla drukarni produkcyjnych"
-                  price="1000 zł"
-                  discountPrice="800 zł"
-                  priceSuffix="/miesiąc"
-                  ctaText="Wybierz Professional"
-                  highlighted
-                >
-                  <p>Testuj przez 30 dni za darmo</p>
-                  <p>Pełny moduł fleksograficzny</p>
-                  <p>Wszystkie funkcje aplikacji</p>
-                  <p>Import listy klientów</p>
-                  <p>Wsparcie telefoniczne</p>
-                </LandingPricingPlan>
-                <LandingPricingPlan
-                  title="Enterprise"
-                  description="Indywidualne integracje i automatyzacje"
-                  price="Indywidualnie"
-                  ctaText="Skontaktuj się z nami"
-                >
-                  <p>Wszystko z planu Professional</p>
-                  <p>Integracje z maszynami przez API</p>
-                  <p>Dedykowane wdrożenia i szkolenia</p>
-                  <p>Dostosowania do procesów firmy</p>
-                  <p>Dedykowany opiekun</p>
-                </LandingPricingPlan>
-                <LandingPricingPlan
-                  title="Lifetime"
-                  description="Indywidualne integracje i automatyzacje"
-                  price="50.000 zł"
-                  discountPrice="39.000 zł"
-                  // priceSuffix="jednorazowy zakup"
-                  ctaText="Skontaktuj się z nami"
-                >
-                  <p>Wszystko z planu Professional i Enterprise</p>
-                  <p>Płacisz raz, korzystasz całe życie</p>
-                  <p>Wszystkie aktualizacje w cenie</p>
-                </LandingPricingPlan>
-              </LandingPricingSection>
-            </TabsContent>
-            <TabsContent value="anually">
-              <LandingPricingSection
-                pt0
-                // title="Wybierz plan dopasowany do Twojej drukarni"
-                // description="Transparentne ceny. Możliwość zmiany planu w dowolnym momencie."
-                // withBackgroundGlow
-                // backgroundGlowVariant="secondary"
-              >
-                <LandingPricingPlan
-                  title="Professional"
-                  description="Kompletne wdrożenie dla drukarni produkcyjnych"
-                  price="10.000 zł"
-                  discountPrice="7.000 zł"
-                  priceSuffix="/rok"
-                  ctaText="Wybierz Professional"
-                  highlighted
-                >
-                  <p>Testuj przez 30 dni za darmo</p>
-                  <p>Pełny moduł fleksograficzny</p>
-                  <p>Wszystkie funkcje aplikacji</p>
-                  <p>Import listy klientów</p>
-                  <p>Wsparcie telefoniczne</p>
-                </LandingPricingPlan>
-                <LandingPricingPlan
-                  title="Enterprise"
-                  description="Indywidualne integracje i automatyzacje"
-                  price="Indywidualnie"
-                  ctaText="Skontaktuj się z nami"
-                >
-                  <p>Wszystko z planu Professional</p>
-                  <p>Integracje z maszynami przez API</p>
-                  <p>Dedykowane wdrożenia i szkolenia</p>
-                  <p>Dostosowania do procesów firmy</p>
-                  <p>Dedykowany opiekun</p>
-                </LandingPricingPlan>
-                <LandingPricingPlan
-                  title="Lifetime"
-                  description="Indywidualne integracje i automatyzacje"
-                  price="50.000 zł"
-                  discountPrice="39.000 zł"
-                  // priceSuffix="jednorazowy zakup"
-                  ctaText="Skontaktuj się z nami"
-                >
-                  <p>Wszystko z planu Professional i Enterprise</p>
-                  <p>Płacisz raz, korzystasz całe życie</p>
-                  <p>Wszystkie aktualizacje w cenie</p>
-                </LandingPricingPlan>
-              </LandingPricingSection>
-            </TabsContent>
-          </Tabs>
-
-        </LandingPricingSection>
-
-
-      </section>*/}
-
-      {/* Testimonials */}
-      {/*<LandingTestimonialGrid*/}
-      {/*  title="Co mówią właściciele drukarni"*/}
-      {/*  description="Historie realnych usprawnień i oszczędności"*/}
-      {/*  testimonialItems={[*/}
-      {/*    {*/}
-      {/*      name: 'Marek Kowalski',*/}
-      {/*      handle: 'Właściciel',*/}
-      {/*      text: 'Redukcja odpadów o 20% w pierwszym miesiącu. W końcu widzimy, gdzie uciekają koszty.',*/}
-      {/*      imageSrc: 'https://picsum.photos/id/64/100/100'*/}
-      {/*    },*/}
-      {/*    {*/}
-      {/*      name: 'Anna Nowak',*/}
-      {/*      handle: 'Kierownik Produkcji',*/}
-      {/*      text: 'Statusy i formularze etapów pasują do naszego procesu. Zespół pracuje szybciej i z mniejszą liczbą błędów.',*/}
-      {/*      imageSrc: 'https://picsum.photos/id/65/100/100'*/}
-      {/*    },*/}
-      {/*    {*/}
-      {/*      name: 'Piotr Wiśniewski',*/}
-      {/*      handle: 'Dyrektor Techniczny',*/}
-      {/*      text: 'Z ofertą i kalkulatorem cen oszczędzamy dziennie godziny. Przepięcie z wyceny w produkt i zlecenie — bajka.',*/}
-      {/*      imageSrc: 'https://picsum.photos/id/669/100/100'*/}
-      {/*    }*/}
-      {/*  ]}*/}
-      {/*  withBackground*/}
-      {/*/>*/}
-
       {/* FAQ */}
       <section id="faq">
         <LandingFaqCollapsibleSection
@@ -967,7 +776,7 @@ export default function V1() {
           // withBackgroundGlow
         >
           <Button size="xl" asChild variant="primary">
-            <a href="#trial">Testuję przez 30 dni</a>
+            <a href={REGISTER_URL}>Testuję przez 30 dni</a>
           </Button>
           <Button size="xl" variant="outlinePrimary" asChild>
             <a href="#contact">Porozmawiaj z ekspertem</a>

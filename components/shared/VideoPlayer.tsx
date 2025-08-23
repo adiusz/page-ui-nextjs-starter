@@ -1,9 +1,10 @@
 'use client';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 import { CircleIcon, PlayIcon } from 'lucide-react';
 import clsx from 'clsx';
 
 export const VideoPlayer = ({
+  startPlay = false,
   autoPlay = true,
   controls = true,
   muted = true,
@@ -17,6 +18,7 @@ export const VideoPlayer = ({
   variant = 'primary',
   className,
 }: {
+  startPlay?: boolean;
   autoPlay?: boolean;
   controls?: boolean;
   muted?: boolean;
@@ -49,6 +51,12 @@ export const VideoPlayer = ({
       }
     }
   };
+
+  useEffect(() => {
+    if (startPlay) {
+      togglePlay();
+    }
+  }, [startPlay])
 
   return (
     <div

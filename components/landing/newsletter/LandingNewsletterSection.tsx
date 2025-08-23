@@ -95,18 +95,18 @@ export const LandingNewsletterSection = ({
           {withAvatars ? (
             <div className="flex mb-6">
               <Image
-                src="/people/1.webp"
+                src="/graphic/1.jpg"
                 alt="Person 1"
-                width={200}
-                height={200}
+                width={150}
+                height={150}
                 className="w-14 h-14 shrink-0 rounded-full"
               />
 
               <Image
-                src="/people/2.webp"
+                src="/graphic/2.jpg"
                 alt="Person 2"
-                width={200}
-                height={200}
+                width={150}
+                height={150}
                 className={clsx(
                   'w-16 h-16 shrink-0 rounded-full rotate-12 -ml-6',
                   variant === 'primary' ? 'border-2 border-primary-500' : '',
@@ -117,10 +117,10 @@ export const LandingNewsletterSection = ({
               />
 
               <Image
-                src="/people/3.webp"
+                src="/graphic/3.jpg"
                 alt="Person 3"
-                width={200}
-                height={200}
+                width={150}
+                height={150}
                 className={clsx(
                   'w-20 h-20 shrink-0 rounded-full relative z-10 -ml-4',
                   variant === 'primary' ? 'border-2 border-primary-500' : '',
@@ -131,10 +131,10 @@ export const LandingNewsletterSection = ({
               />
 
               <Image
-                src="/people/4.webp"
+                src="/graphic/4.jpg"
                 alt="Person 4"
-                width={200}
-                height={200}
+                width={150}
+                height={150}
                 className={clsx(
                   'w-16 h-16 shrink-0 rounded-full -rotate-12 -ml-4',
                   variant === 'primary' ? 'border-2 border-primary-500' : '',
@@ -145,10 +145,10 @@ export const LandingNewsletterSection = ({
               />
 
               <Image
-                src="/people/5.webp"
+                src="/graphic/5.jpg"
                 alt="Person 5"
-                width={200}
-                height={200}
+                width={150}
+                height={150}
                 className="w-14 h-14 shrink-0 rounded-full -ml-4"
               />
             </div>

@@ -292,6 +292,7 @@ export const LandingPrimaryVideoCtaSection = ({
   videoShadow = 'hard',
   muted = true,
   autoPlay = false,
+  startPlay = false,
   controls = false,
   loop = false,
   minHeight = 350,
@@ -319,6 +320,7 @@ export const LandingPrimaryVideoCtaSection = ({
   videoShadow?: 'none' | 'soft' | 'hard';
   muted?: boolean;
   autoPlay?: boolean;
+  startPlay?: boolean;
   controls?: boolean;
   loop?: boolean;
   minHeight?: number;
@@ -409,6 +411,7 @@ export const LandingPrimaryVideoCtaSection = ({
                   poster={videoPoster}
                   src={videoSrc}
                   autoPlay={autoPlay}
+                  startPlay={startPlay}
                   controls={controls}
                   loop={loop}
                   muted={muted}
@@ -428,6 +431,7 @@ export const LandingPrimaryVideoCtaSection = ({
                 poster={videoPoster}
                 src={videoSrc}
                 autoPlay={autoPlay}
+                startPlay={startPlay}
                 controls={controls}
                 loop={loop}
                 muted={muted}
