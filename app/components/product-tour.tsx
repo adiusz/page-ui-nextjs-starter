@@ -3,76 +3,7 @@ import { Skeleton } from "@/components/shared/ui/skeleton";
 import Image from "next/image";
 import { Suspense } from "react";
 
-const ProductTour = () => {
-  const steps = [
-    {
-      value: "step-1",
-      title: "Wyceny",
-      description: "Z naszym kalkulatorem wycen, opartym o ceny materiałów, które sam podajesz, będziesz widział dokładnie swoje koszty, marżę oraz przychód. Koniec z arkuszami kalkulacyjnymi!",
-      src: "/quotes.png",
-      alt: "Wyceny"
-    },
-    {
-      value: "step-2",
-      title: "Od Wyceny do Zlecenia",
-      description: "Utwórz Zlecenie na podstawie Wyceny — od wybrania Klienta, stworzenia Produktu i wpisania parametrów Zlecenia — wszystko w 1 okienku.",
-      src: "/add_order_from_quote.png",
-      alt: "Wyceny"
-    },
-    {
-      value: "step-3",
-      title: "Uprawnienia pracowników",
-      description: "Stwórz Role, nadaj Uprawnienia i przypisuj do Role do pracowników, aby każdy mógł robić na platformie tylko tyle, ile potrzebuje.",
-      src: "/permissions.png",
-      alt: "Uprawnienia pracowników"
-    },
-    {
-      value: "step-4",
-      title: "Dokumnety WZ",
-      description: "Wybierz Zlecenia, dodaj pozycje, uzupełnij ceny i wygeneruj dokument WZ. Drukuj lub ściągnij PDF.",
-      src: "/add_wz.png",
-      alt: "Dokumenty WZ"
-    },
-    // {
-    //   value: "step-6",
-    //   title: "Przeglądaj i zarządzaj Zleceniami w 1 miejscu",
-    //   description: "Filtruj i przeglądaj Zlecenia, sprawdzaj etap produkcji, monitoruj odpady oraz zgłoszone uwagi.",
-    //   src: "/orders_desktop.png",
-    //   alt: "Zarządzanie zleceniami"
-    // }
-  ];
-
-  const steps2 = [
-    {
-      value: "step-5",
-      title: "Analityka",
-      description: "Wybierz pracownika, zakres dat i sprawdź jego efektywność — ilość zleceń, całkowite zapotrzebowanie materiału oraz wygenerowany odpad.",
-      src: "/analytics.png",
-      alt: "Dodawanie Zlecenia"
-    },
-    {
-      value: "step-6",
-      title: "Wygoda",
-      description: "Chcesz dodać Zlecenie dla nowego Klienta? Koniec z przeklikiwaniem się po różnych rejonach aplikacji — w PrintFlow stworzysz wszystko w jednym miejscu!",
-      src: "/add_order_from_quote.png",
-      alt: "Dodawanie Zlecenia"
-    },
-    {
-      value: "step-7",
-      title: "Pełne dane",
-      description: "Twoje obecne katalogi są niespójne, bo pracownicy nie wpisali jakichś danych albo wpisywali je w różnej konwencji? W PrintFlow to nie przejdzie.",
-      src: "/pure_data.png",
-      alt: "Dodawanie Zlecenia"
-    },
-    {
-      value: "step-8",
-      title: "Personalizacja",
-      description: "Przełączaj się między trybem jasnym a ciemnym. Nie podoba Ci się kolor? Zmień go na jeden z szcześciu dostępnych kolorów przewodnich.",
-      src: "/customization.png",
-      alt: "Dodawanie Zlecenia"
-    },
-  ]
-
+const ProductTour = ({ steps_1, steps_2 }: any) => {
   return (
     <>
       <LandingProductTourSection
@@ -85,7 +16,7 @@ const ProductTour = () => {
         pb0
       >
         <LandingProductTourList>
-          {steps?.map(({ value, title, description }) => (
+          {steps_1?.map(({ value, title, description }: any) => (
             <LandingProductTourTrigger key={value} value={value}>
               <p className="text-xl font-bold">{title}</p>
               <p>{description}</p>
@@ -96,7 +27,7 @@ const ProductTour = () => {
         <div
           // className="fixed top-0"
         >
-          {steps?.map(({ value, src, title }) => (
+          {steps_1?.map(({ value, src, title }: any) => (
             <LandingProductTourContent key={value} value={value}>
               <Suspense fallback={<Skeleton className="h-full" />}>
                 <Image
@@ -128,7 +59,7 @@ const ProductTour = () => {
         pt0
       >
         <LandingProductTourList>
-          {steps2?.map(({ value, title, description }) => (
+          {steps_2?.map(({ value, title, description }: any) => (
             <LandingProductTourTrigger key={value} value={value}>
               <p className="text-xl font-bold">{title}</p>
               <p>{description}</p>
@@ -139,7 +70,7 @@ const ProductTour = () => {
         <div
           // className="fixed top-0"
         >
-          {steps2?.map(({ value, src, title }) => (
+          {steps_2?.map(({ value, src, title }: any) => (
             <LandingProductTourContent key={value} value={value}>
               <Image
                 width={800}

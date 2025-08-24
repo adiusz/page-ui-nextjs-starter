@@ -127,19 +127,19 @@ export const LandingPricingPlan = ({
             {discountPrice}
           </span>
 
-          {priceSuffix ? (
-            <span
-              className={clsx(
-                featured
-                  ? 'text-gray-300 dark:text-gray-500'
-                  : 'dark:text-gray-400 text-gray-600',
-                'text-sm font-semibold leading-6',
-              )}
-            >
-              {priceSuffix}
-            </span>
-          ) : null}
         </p>
+        {priceSuffix ? (
+          <span
+            className={clsx(
+              featured
+                ? 'text-gray-300 dark:text-gray-500'
+                : 'dark:text-gray-400 text-gray-600',
+              'text-sm font-semibold leading-6 PRICE_SUFFIX',
+            )}
+          >
+            {priceSuffix}
+          </span>
+        ) : null}
 
         <Button
           size="lg"

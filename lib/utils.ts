@@ -65,3 +65,25 @@ export function convertToRgba({
   // Fallback
   return `rgba(177, 177, 177, ${opacity})`;
 }
+
+export function formatCurrency(
+  amount: number,
+  currency: string = "PLN",
+  useDots: boolean = false
+) {
+  const formatted = new Intl.NumberFormat("pl-PL", {
+    style: "currency",
+    currency,
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  }).format(amount);
+
+  if (useDots) {
+    // Replace spaces in the number part with dots, keep the space before the currency
+    // Example: "1 000 zł" -> "1.000 zł"
+    return formatted.replace(/\s(?=\d)/g, '.');
+  }
+
+  // Default: native formatting with spaces
+  return formatted;
+}

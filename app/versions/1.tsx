@@ -8,10 +8,9 @@ import {
   LandingFooter,
   LandingFooterColumn,
   LandingFooterLink, LandingGridPatternCtaBg, LandingLeadingPill,
-  LandingPathsCtaBg, LandingPrimaryVideoCtaSection,
-  LandingWavesCtaBg
+  LandingPathsCtaBg, LandingPrimaryVideoCtaSection
 } from "@/components/landing";
-import { LandingPrimaryImageCtaSection, LandingPrimaryTextCtaSection } from "@/components/landing/cta/LandingPrimaryCta";
+import { LandingPrimaryTextCtaSection } from "@/components/landing/cta/LandingPrimaryCta";
 import { LandingProductFeature } from "@/components/landing/LandingProductFeature";
 import { LandingProductFeaturesGrid } from "@/components/landing/LandingProductFeaturesGrid";
 import { LandingProductSteps } from "@/components/landing/LandingProductSteps";
@@ -21,36 +20,53 @@ import { LandingNewsletterSection } from "@/components/landing/newsletter/Landin
 import { LandingPricingPlan } from "@/components/landing/pricing/LandingPricingPlan";
 import { LandingPricingSection } from "@/components/landing/pricing/LandingPricingSection";
 import Logo from "@/components/logo";
-import {
-    Button
-} from "@/components/shared/ui/button";
+import { Button } from "@/components/shared/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/shared/ui/tabs";
-import ShinyText from "@/src/components/ShinyText/ShinyText";
-import TextType from "@/src/components/TextType/TextType";
-import { Bell, Calculator, Check, Image as ImageIcon, Lightbulb, Loader, Package, Route, Users2, Warehouse } from "lucide-react";
-import RotatingText from "@/src/components/RotatingText/RotatingText";
-import { useEffect, useId, useRef, useState } from "react";
+import { useId, useState } from "react";
+import { copy, LOGIN_URL, REGISTER_URL } from "../copy";
+import AnnoucmentBar from "../components/annoucment-bar";
+import Link from "next/link";
+import { Phone } from "lucide-react";
+import { formatCurrency } from "@/lib/utils";
 
-const IS_DEV = false;
-const LOGIN_URL = IS_DEV ? `http://localhost:3000/login` : `${process.env.NEXT_PUBLIC_APP_URL}/login`;
-const REGISTER_URL = IS_DEV ? `http://localhost:3000/register` : `${process.env.NEXT_PUBLIC_APP_URL}/register`
+// const IS_DEV = false;
+// const LOGIN_URL = IS_DEV ? `http://localhost:3000/login` : `${process.env.NEXT_PUBLIC_APP_URL}/login`;
+// const REGISTER_URL = IS_DEV ? `http://localhost:3000/register` : `${process.env.NEXT_PUBLIC_APP_URL}/register`
 
-const copy = {
+// const copy = {
   // h1: "Zarządzanie drukarnią oparte na danych, nie domysłach"
-  h1: "Zwiększ zyski swojej drukarni o 30% dzięki kontroli odpadów"
-}
+  // h1: "Zwiększ zyski swojej drukarni o 30% dzięki kontroli odpadów"
+// }
 
 export default function V1() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
     <>
+      {/*<AnnoucmentBar 
+      
+      strong="promocja Early Bird 🕊️"
+      text="Wypróbuj 30 dni za darmo • plan Lifetime -50%"
+      // linkComponent={<>
+      //   <Link href="/">
+      //     <Button variant="default" className="flex-none rounded-full bg-white/10 px-3.5 py-0 text-sm font-semibold text-white shadow-xs inset-ring-white/20 hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+      //       Skontaktuj się z nami 📞
+      //     </Button>
+      //   </Link>
+      // </>}
+      
+      
+      
+      />*/}
+      
       {/* Header */}
       <LandingHeader
         withBackground
         fixed
         logoComponent={<Logo centered />}
+        annoucmentBarValue="promocja Early Birds 🕊️ • Wypróbuj 30 dni za darmo • plan Lifetime -50%"
       >
+        <LandingHeaderMenuItem href="/" type="icon-button" variant="outlinePrimary" label=<><Phone /></> />
         <LandingHeaderMenuItem href="#moduly" label="Moduły" />
         <LandingHeaderMenuItem href="#funkcje" label="Funkcje" />
         <LandingHeaderMenuItem href="#jak-dziala" label="Jak działa" />
@@ -64,43 +80,25 @@ export default function V1() {
         />
         <LandingHeaderMenuItem
           href={REGISTER_URL}
-          label="Rozpocznij za darmo"
+          label={copy.ctaPrimary}
           type="button"
         />
       </LandingHeader>
 
       {/* Hero Section */}
       <LandingPrimaryVideoCtaSection
-        title={<>
-          <TextType
-          text={[copy.h1]}
-            typingSpeed={20}
-            pauseDuration={1500}
-            showCursor={false}
-            cursorCharacter="|"
-          />
-        </>}
-
-        description={
-          <>
-            <span>PrintFlow to nowoczesna platforma online do prowadzenia drukarni fleksograficznych. Odzyskaj kontrolę nad</span>
-            {/*odpadami, marżą, produktami, zleceniami, dokumentami. Analizuj kluczowe dane.*/}
-            <RotatingText
-              texts={["odpadami.", "marżą.", "produktami.", "zleceniami.", "dokumentami."]}
-              mainClassName="inline-flex w-[150px] justify-start px-[4px] bg-transparent text-primary-600 font-bold overflow-hidden py-0.5 sm:py-0.5 md:py-0.5 rounded-lg"
-              staggerFrom={"last"}
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "-120%" }}
-              staggerDuration={0.025}
-              splitLevelClassName="overflow-hidden "
-              transition={{ type: "spring", damping: 30, stiffness: 400 }}
-              rotationInterval={1500}
-            />
-            <br />
-            <span>Analizuj kluczowe dane. Podejmuj lepsze decyzje.</span>
-          </>
-        }
+        title={copy.hero.h1}
+        // title={<>
+        //   <TextType
+        //     className="text-4xl"
+        //     text={[copy.h1]}
+        //     typingSpeed={20}
+        //     pauseDuration={1500}
+        //     showCursor={false}
+        //     cursorCharacter="|"
+        //   />
+        // </>}
+        description={copy.hero.headline}
         videoPoster="/app_mock_desktop.png"
         videoSrc="https://cache.shipixen.com/features/8-customize-pages.mp4"
         // imageAlt="PrintFlow app"
@@ -118,111 +116,63 @@ export default function V1() {
 
         <Button size="xl" asChild variant="primary">
           <a href={REGISTER_URL}>
-            Wypróbuj
+            {copy.ctaPrimary}
           </a>
         </Button>
-        <Button size="xl" variant="outlinePrimary" onClick={() => setIsPlaying(true)}>
-          <span>Zobacz demo</span>
+        <Button size="xl" variant="outlinePrimary">
+          <a href="https://calendly.com/printflowapp/printflow-darmowa-prezentacja-q-a">
+            {copy.ctaSecondary}
+          </a>
         </Button>
 
         <LandingDiscount
           className="w-full flex justify-center"
-          discountValueText="Testuj przez 30 dni za darmo."
-          discountDescriptionText="*Karta kredytowa nie jest wymagana."
+          discountValueText={copy.hero.discountValue}
+          discountDescriptionText={copy.hero.discountDesc}
 
         />
       </LandingPrimaryVideoCtaSection>
 
-      <ProductTour />
+      <ProductTour 
+        steps_1={copy.product_tour.steps_1}
+        steps_2={copy.product_tour.steps_2}
+      />
 
       {/* Feature List (dopasowane do funkcji) */}
       <section id={`${useId()}_features`}>
         <LandingFeatureList
           // withBackground
-          title="Wszystko, czego potrzebujesz w jednej platformie"
-          description="Zawsze pod ręką, w nowoczesnym wydaniu"
-          featureItems={[
-            {
-              title: "Klienci i maszyny",
-              description: "Pełna baza Klientów, z przypisanmi Produktami oraz Zleceniami, a także rejestr maszyn.",
-              icon: <Users2 className="w-6 h-6" />
-            },
-            {
-              title: "Produkty i komponenty",
-              description: "Produkty ze specyfikacją: wykrojniki, kolory, materiały, podglądy i inne parametry techniczne.",
-              icon: <ImageIcon className="w-6 h-6" />
-            },
-            {
-              title: "Zlecenia z etapami produkcji",
-              description: "Dedykowane formularze, zgłaszanie uszkodzonych polimerów i użycia innych kolorów.",
-              icon: <Package className="w-6 h-6" />
-            },
-          ]}
+          title={copy.features_1.title}
+          description={copy.features_1.description}
+          featureItems={copy.features_1.items}
         />
         <LandingFeatureList
           withBackground
-          title="Pełna ścieżka audytu: kto, co, ile i kiedy"
+          title={copy.features_2.title}
           withBackgroundGlow
           // description="Zawsze pod ręką, w nowoczesnym wydaniu"
-          featureItems={[
-            {
-              title: "Dowiedz się kto dodał daną Wycenę oraz jakich cen użył",
-              description: "Chcesz wiedzieć, który z handlowców generuje największe marże? Nie ma problemu.",
-              icon: <Calculator className="w-6 h-6" />
-            },
-            {
-              title: "Kontrola przekazań i zwrotów materiałów",
-              description: "Stany magazynowe nie zawsze się zgadzają? Sprawdzaj kto i kiedy wydał oraz odebrał materiał.",
-              icon: <Warehouse className="w-6 h-6" />
-            },
-            // {
-            //   title: "Sprawdzaj kto i kiedy pracował nad danym Zleceniem",
-            //   description: "Od momentu wydania materiału, przez drukowanie po przetwarzanie. Wszystko w jednym miejscu.",
-            //   icon: <Route className="w-6 h-6" />
-            // },
-            {
-              title: "Bądź na bieżąco dzięki Powiadomieniom",
-              description: "Zmiana statusu zamówienia? Zgłoszone uwagi? Problemy techniczne? Twoim pracownikom nic nie umknie.",
-              icon: <Bell className="w-6 h-6" />
-            },
-          ]}
+          featureItems={copy.features_2.items}
         />
       </section>
 
 
-      <section id="jak-dziala">
+      <section>
         <LandingProductSteps
-          title="Jak to działa — w 4 prostych krokach"
-          description={<>
-            <a className="text-primary-600 underline" href={REGISTER_URL}>Zarejestruj się</a>
-            <span> i sprawdź. Założenie konta zajmuje 3 minuty!</span>
-          </>}
+          title={copy.how_it_works.title}
+          description={copy.how_it_works.description}
           // withBackground
         >
-          <LandingProductFeature
-            title="Dodaj pirewszego Klienta"
-            description={`Wypełnij dane i dodaj Klienta. Jeśli chicałbyś zaimportować instniejącą listę Klientów (np. z pliku CSV), pomożemy w tym procesie!`}
-            imageSrc="/add_client_desktop.png"
-            imageAlt="Dodawanie Klienta"
-          />
-          <LandingProductFeature
-            title="Wybierz Klienta, a następnie dodaj Produkt"
-            description={`Stwórz wszystkie komponenty Produktu, pozostając na tej samej stronie i zapisz. Produkt stworzony i przypisany do wybranego Klienta.`}
-            imageSrc="/add_product_desktop.png"
-            imageAlt="Dodawanie Produktu"
-          />
-          <LandingProductFeature
-            title="Utwórz Zlecenie dla nowego Produktu"
-            description={`Wybierz Klienta, Produkt, który przed chwilą utworzyłeś, podaj nakład, datę realizacji i stwórz Zlecenie.`}
-            imageSrc="/add_order_desktop.png"
-            imageAlt="Dodwanie Zlecenia"
-          />
-          <LandingProductFeature
-            title="Przeglądaj i zarządzaj Zleceniami w 1 miejscu"
-            description={`Filtruj i przeglądaj Zlecenia, sprawdzaj etap produkcji, monitoruj odpady oraz zgłoszone uwagi.`}
-            imageSrc="/orders_desktop.png"
-            imageAlt="Zarządzanie zleceniami"
-          />
+          {copy.how_it_works.items.map((feature) => (
+            <LandingProductFeature
+              key={feature.title}
+              title={feature.title}
+              description={feature.description}
+              imageSrc={feature.imageSrc}
+              imageAlt={feature.imageAlt}
+            />
+          ))}
+
+
 
         </LandingProductSteps>
       </section>
@@ -282,71 +232,33 @@ export default function V1() {
       {/*/>*/}
 
       {/* Sekcja: Moduły (nowa sekcja Product Features Grid) */}
-      <section id="moduly">
+      <section>
         <LandingProductFeaturesGrid
-          title="Trzy moduły — jeden ekosystem"
-          // description="Korzystaj już dziś z pełnego modułu fleksograficznego. Moduły cyfrowe w przygotowaniu."
+          title={copy.roadmap.title}
           withBackgroundGlow
         >
-          <LandingProductFeature
-            title="Fleksograficzny"
-            descriptionComponent={<>
-              {/*<span>Kompletny, działający moduł: 5 statusów zlecenia, wydania i zwroty materiałów ze Sklepu/Magazynu, rejestr odpadów, zgłaszanie uszkodzonych polimerów, praca na kolorach, częściowy druk, pełna historia operacji.</span>*/}
-              <div className="rounded-full mt-[-14px] border-green-500 border !text-black flex">
-                <LandingLeadingPill
-                  borderVariant="primary"
-                  // textVariant="primary"
+          {copy.roadmap.items.map(({ title, imageSrc, imageAlt, status }) => (
+            <LandingProductFeature
+              key={title}
+              title={title}
+              imageSrc={imageSrc}
+              imageAlt={imageAlt}
+              descriptionComponent={
+                <div
+                  className={`rounded-full mt-[-14px] border-${status.border} border !text-black flex`}
                 >
-                  <div className="flex items-center">
-                    <Check className="text-green-500 w-4 h-4 mr-1"/>
-                    <span>Dostępny</span>
-                  </div>
-                </LandingLeadingPill>
-              </div>
-            </>}
-            imageSrc="/module_f.png"
-            imageAlt="Moduł fleksograficzny"
-          />
-          <LandingProductFeature
-            title="Cyfra arkuszowa"
-            // description="Planowane: konfiguracja pod digital sheet, uproszczone statusy, kalkulacje kosztowe dla krótkich serii, integracje z RIP/DFE."
-            descriptionComponent={<>
-              {/*<span>Kompletny, działający moduł: 5 statusów zlecenia, wydania i zwroty materiałów ze Sklepu/Magazynu, rejestr odpadów, zgłaszanie uszkodzonych polimerów, praca na kolorach, częściowy druk, pełna historia operacji.</span>*/}
-              <div className="rounded-full mt-[-14px] border-yellow-500 border !text-black flex">
-                <LandingLeadingPill
-                  borderVariant="primary"
-                  // textVariant="primary"
-                >
-                  <div className="flex items-center">
-                    <Loader className="text-yellow-500 w-4 h-4 mr-1"/>
-                    <span>Budowany</span>
-                  </div>
-                </LandingLeadingPill>
-              </div>
-            </>}
-            imageSrc="/module_ds.png"
-            imageAlt="Moduł cyfrowy arkusz"
-          />
-          <LandingProductFeature
-            title="Cyfra rolowa"
-            // description="Planowane: parametry roli, przebieg pracy inline, automatyzacja przeliczeń materiałowych i rozliczeń wolumenu."
-            descriptionComponent={<>
-              {/*<span>Kompletny, działający moduł: 5 statusów zlecenia, wydania i zwroty materiałów ze Sklepu/Magazynu, rejestr odpadów, zgłaszanie uszkodzonych polimerów, praca na kolorach, częściowy druk, pełna historia operacji.</span>*/}
-              <div className="rounded-full mt-[-14px] border-gray-500 border !text-black flex">
-                <LandingLeadingPill
-                  borderVariant="primary"
-                  // textVariant="primary"
-                >
-                  <div className="flex items-center">
-                    <Lightbulb className="text-gray-500 w-4 h-4 mr-1"/>
-                    <span>Planowany</span>
-                  </div>
-                </LandingLeadingPill>
-              </div>
-            </>}
-            imageSrc="/module_dw.png"
-            imageAlt="Moduł cyfrowy rolowy"
-          />
+                  <LandingLeadingPill borderVariant="primary">
+                    <div className="flex items-center">
+                      <status.icon
+                        className={`text-${status.color} w-4 h-4 mr-1`}
+                      />
+                      <span>{status.label}</span>
+                    </div>
+                  </LandingLeadingPill>
+                </div>
+              }
+            />
+          ))}
         </LandingProductFeaturesGrid>
       </section>
 
@@ -606,7 +518,7 @@ export default function V1() {
       <section>
         <LandingPricingSection
           // pt0
-          title="Wybierz plan dopasowany do Twojej drukarni"
+          title={copy.pricing.title}
           description="Transparentne ceny. Możliwość zmiany planu w dowolnym momencie."
           // withBackgroundGlow
           // backgroundGlowVariant="secondary"
@@ -616,7 +528,7 @@ export default function V1() {
           <Tabs defaultValue="monthly">
             <TabsList className="justify-self-center ml-auto mr-auto block rounded-full">
               <TabsTrigger value="monthly">Miesięcznie</TabsTrigger>
-              <TabsTrigger value="anually">Rocznie</TabsTrigger>
+              <TabsTrigger value="annual">Rocznie</TabsTrigger>
             </TabsList>
             <TabsContent value="monthly">
               <LandingPricingSection
@@ -626,48 +538,28 @@ export default function V1() {
                 // withBackgroundGlow
                 // backgroundGlowVariant="secondary"
               >
-                <LandingPricingPlan
-                  title="Professional"
-                  description="Kompletne wdrożenie dla drukarni produkcyjnych"
-                  price="1000 zł"
-                  discountPrice="800 zł"
-                  priceSuffix="/miesiąc"
-                  ctaText="Wybierz Professional"
-                  highlighted
-                >
-                  <p>Testuj przez 30 dni za darmo</p>
-                  <p>Pełny moduł fleksograficzny</p>
-                  <p>Wszystkie funkcje aplikacji</p>
-                  <p>Import listy klientów</p>
-                  <p>Wsparcie telefoniczne</p>
-                </LandingPricingPlan>
-                <LandingPricingPlan
-                  title="Enterprise"
-                  description="Indywidualne integracje i automatyzacje"
-                  price="Indywidualnie"
-                  ctaText="Skontaktuj się z nami"
-                >
-                  <p>Wszystko z planu Professional</p>
-                  <p>Integracje z maszynami przez API</p>
-                  <p>Dedykowane wdrożenia i szkolenia</p>
-                  <p>Dostosowania do procesów firmy</p>
-                  <p>Dedykowany opiekun</p>
-                </LandingPricingPlan>
-                <LandingPricingPlan
-                  title="Lifetime"
-                  description="Indywidualne integracje i automatyzacje"
-                  price="50.000 zł"
-                  discountPrice="39.000 zł"
-                  // priceSuffix="jednorazowy zakup"
-                  ctaText="Skontaktuj się z nami"
-                >
-                  <p>Wszystko z planu Professional i Enterprise</p>
-                  <p>Płacisz raz, korzystasz całe życie</p>
-                  <p>Wszystkie aktualizacje w cenie</p>
-                </LandingPricingPlan>
+                {copy.pricing.plans.map(
+                  ({ title, description, prices, discountPrice, ctaText, highlighted, features, featured }) => (
+                    <LandingPricingPlan
+                      key={title}
+                      title={title}
+                      description={description}
+                      price={typeof prices.monthly.price === "number" ? formatCurrency(prices.monthly.price) : prices.monthly.price}
+                      discountPrice={typeof prices.monthly.discountPrice === "number" ? formatCurrency(prices.monthly.discountPrice) : prices.monthly.discountPrice}
+                      priceSuffix={prices.monthly.priceSuffix}
+                      ctaText={ctaText}
+                      highlighted={highlighted}
+                      featured={featured}
+                    >
+                      {features.map((feature) => (
+                        <p key={feature}>{feature}</p>
+                      ))}
+                    </LandingPricingPlan>
+                  )
+                )}
               </LandingPricingSection>
             </TabsContent>
-            <TabsContent value="anually">
+            <TabsContent value="annual">
               <LandingPricingSection
                 pt0
                 // title="Wybierz plan dopasowany do Twojej drukarni"
@@ -675,45 +567,25 @@ export default function V1() {
                 // withBackgroundGlow
                 // backgroundGlowVariant="secondary"
               >
-                <LandingPricingPlan
-                  title="Professional"
-                  description="Kompletne wdrożenie dla drukarni produkcyjnych"
-                  price="10.000 zł"
-                  discountPrice="7.000 zł"
-                  priceSuffix="/rok"
-                  ctaText="Wybierz Professional"
-                  highlighted
-                >
-                  <p>Testuj przez 30 dni za darmo</p>
-                  <p>Pełny moduł fleksograficzny</p>
-                  <p>Wszystkie funkcje aplikacji</p>
-                  <p>Import listy klientów</p>
-                  <p>Wsparcie telefoniczne</p>
-                </LandingPricingPlan>
-                <LandingPricingPlan
-                  title="Enterprise"
-                  description="Indywidualne integracje i automatyzacje"
-                  price="Indywidualnie"
-                  ctaText="Skontaktuj się z nami"
-                >
-                  <p>Wszystko z planu Professional</p>
-                  <p>Integracje z maszynami przez API</p>
-                  <p>Dedykowane wdrożenia i szkolenia</p>
-                  <p>Dostosowania do procesów firmy</p>
-                  <p>Dedykowany opiekun</p>
-                </LandingPricingPlan>
-                <LandingPricingPlan
-                  title="Lifetime"
-                  description="Indywidualne integracje i automatyzacje"
-                  price="50.000 zł"
-                  discountPrice="39.000 zł"
-                  // priceSuffix="jednorazowy zakup"
-                  ctaText="Skontaktuj się z nami"
-                >
-                  <p>Wszystko z planu Professional i Enterprise</p>
-                  <p>Płacisz raz, korzystasz całe życie</p>
-                  <p>Wszystkie aktualizacje w cenie</p>
-                </LandingPricingPlan>
+                {copy.pricing.plans.map(
+                  ({ title, description, prices, discountPrice, ctaText, highlighted, features, featured }) => (
+                    <LandingPricingPlan
+                      key={title}
+                      title={title}
+                      description={description}
+                      price={typeof prices.annual.price === "number" ? formatCurrency(prices.annual.price) : prices.annual.price}
+                      discountPrice={typeof prices.annual.discountPrice === "number" ? formatCurrency(prices.annual.discountPrice) : prices.annual.discountPrice}
+                      priceSuffix={prices.annual.priceSuffix}
+                      ctaText={ctaText}
+                      highlighted={highlighted}
+                      featured={featured}
+                    >
+                      {features.map((feature) => (
+                        <p key={feature}>{feature}</p>
+                      ))}
+                    </LandingPricingPlan>
+                  )
+                )}
               </LandingPricingSection>
             </TabsContent>
           </Tabs>
@@ -724,46 +596,21 @@ export default function V1() {
       </section>
 
       {/* FAQ */}
-      <section id="faq">
+      <section>
         <LandingFaqCollapsibleSection
           withBackgroundGlow
-          title="Najczęściej zadawane pytania"
-          description="Szybkie odpowiedzi na najważniejsze kwestie"
-          faqItems={[
-            {
-              question: "Czy system obsługuje wszystkie typy druku?",
-              answer: "Obecnie w pełni dostępny jest moduł fleksograficzny. Moduły do druku cyfrowego arkuszowego i rolowego są w przygotowaniu i pojawią się w kolejnych aktualizacjach."
-            },
-            {
-              question: "Czy system jest zgodny z polskimi przepisami?",
-              answer: "Tak, generowane dokumenty (WZ, faktury – wkrótce) i raporty są zgodne z obowiązującymi wymogami."
-            },
-            {
-              question: "Jak długo trwa wdrożenie?",
-              answer: `Założenie konta zajmuje 3 minuty. Utworzenie pierwszego ~lecenia nie powinno zająć dłużej niż 15 minut. Cała aplikacja jest bardzo intuicyjna oraz cały czas "prowadzi za rękę" gwarantując spójność zapisywanych danych. `
-            },
-            {
-              question: "Czy mogę zaimportować dane z obecnego systemu?",
-              answer: "Obecnie możliwość ta jest dostępna tylko dla płacących klientów i usługę tę wykonujemy indywidualnie, pozostając w kontakcie z Państwem."
-            },
-            {
-              question: "Jakie integracje są dostępne?",
-              answer: "Dla indywidualnych Klientów, oferujemy integrację systemu PrintFlow z zewnętrznym API maszyny. W przyszłości planujemy dodać integrację z systemami księgowymi."
-            },
-            {
-              question: "Czy jest kontrola uprawnień?",
-              answer: "Tak. Role i uprawnienia (RBAC) pozwalają ograniczyć dostęp do funkcji i danych zgodnie z obowiązkami pracowników."
-            }
-          ]}
+          title={copy.faq.title}
+          description={copy.faq.description}
+          faqItems={copy.faq.items}
           withBackground
         />
       </section>
 
       {/* Bottom CTA */}
-      <section id="cta">
+      <section>
         <LandingPrimaryTextCtaSection
-          title="Gotowy na pełną kontrolę nad swoją drukarnią?"
-          description="Kontroluj środki i zwiększaj zyski razem z nami!"
+          title={copy.bottomCta.title}
+          description={copy.bottomCta.description}
           textPosition="center"
           // effectComponent={<LandingDotParticleCtaBg />}
           // effectComponent={<LandingGridPatternCtaBg variant="primary" />}
@@ -776,20 +623,20 @@ export default function V1() {
           // withBackgroundGlow
         >
           <Button size="xl" asChild variant="primary">
-            <a href={REGISTER_URL}>Testuję przez 30 dni</a>
+            <a href={REGISTER_URL}>{copy.cta.primary.text}</a>
           </Button>
           <Button size="xl" variant="outlinePrimary" asChild>
-            <a href="#contact">Porozmawiaj z ekspertem</a>
+            <a href={copy.cta.secondary.path}>{copy.cta.secondary.text}</a>
           </Button>
         </LandingPrimaryTextCtaSection>
       </section>
 
       {/* Newsletter */}
       <LandingNewsletterSection
-        title="Bądź na bieżąco z rozwojem modułów"
-        description="Nowe funkcje, case studies i aktualizacje roadmapy prosto na skrzynkę."
-        buttonLabel="Zapisz się"
-        placeholderLabel="Wprowadź swój adres email"
+        title={copy.newsletter_sign_up.title}
+        description={copy.newsletter_sign_up.description}
+        buttonLabel={copy.newsletter_sign_up.buttonLabel}
+        placeholderLabel={copy.newsletter_sign_up.placeholderLabel}
         withBackground
         withAvatars
       />
