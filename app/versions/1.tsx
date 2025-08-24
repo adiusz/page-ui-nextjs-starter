@@ -539,7 +539,7 @@ export default function V1() {
                 // backgroundGlowVariant="secondary"
               >
                 {copy.pricing.plans.map(
-                  ({ title, description, prices, discountPrice, ctaText, highlighted, features, featured }) => (
+                  ({ title, description, prices, ctaText, highlighted, features, featured }) => (
                     <LandingPricingPlan
                       key={title}
                       title={title}
@@ -568,7 +568,7 @@ export default function V1() {
                 // backgroundGlowVariant="secondary"
               >
                 {copy.pricing.plans.map(
-                  ({ title, description, prices, discountPrice, ctaText, highlighted, features, featured }) => (
+                  ({ title, description, prices, ctaText, highlighted, features, featured }) => (
                     <LandingPricingPlan
                       key={title}
                       title={title}
