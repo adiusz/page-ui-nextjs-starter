@@ -2,13 +2,16 @@
 
 import ProductTour from "@/app/components/product-tour";
 import {
-  LandingDiscount,
-  LandingFaqCollapsibleSection,
-  LandingFeatureList,
-  LandingFooter,
-  LandingFooterColumn,
-  LandingFooterLink, LandingGridPatternCtaBg, LandingLeadingPill,
-  LandingPathsCtaBg, LandingPrimaryVideoCtaSection
+    LandingAboutSection,
+    LandingDiscount,
+    LandingFaqCollapsibleSection,
+    LandingFeatureList,
+    LandingFooter,
+    LandingFooterColumn,
+    LandingFooterLink, LandingGridPatternCtaBg, LandingLeadingPill,
+    LandingPathsCtaBg, LandingPrimaryVideoCtaSection,
+    LandingSocialProofBand,
+    LandingSocialProofBandItem
 } from "@/components/landing";
 import { LandingPrimaryTextCtaSection } from "@/components/landing/cta/LandingPrimaryCta";
 import { LandingProductFeature } from "@/components/landing/LandingProductFeature";
@@ -22,43 +25,17 @@ import { LandingPricingSection } from "@/components/landing/pricing/LandingPrici
 import Logo from "@/components/logo";
 import { Button } from "@/components/shared/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/shared/ui/tabs";
+import { formatCurrency } from "@/lib/utils";
+import { Phone } from "lucide-react";
 import { useId, useState } from "react";
 import { copy, LOGIN_URL, REGISTER_URL } from "../copy";
-import AnnoucmentBar from "../components/annoucment-bar";
-import Link from "next/link";
-import { Phone } from "lucide-react";
-import { formatCurrency } from "@/lib/utils";
-
-// const IS_DEV = false;
-// const LOGIN_URL = IS_DEV ? `http://localhost:3000/login` : `${process.env.NEXT_PUBLIC_APP_URL}/login`;
-// const REGISTER_URL = IS_DEV ? `http://localhost:3000/register` : `${process.env.NEXT_PUBLIC_APP_URL}/register`
-
-// const copy = {
-  // h1: "Zarządzanie drukarnią oparte na danych, nie domysłach"
-  // h1: "Zwiększ zyski swojej drukarni o 30% dzięki kontroli odpadów"
-// }
 
 export default function V1() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
     <>
-      {/*<AnnoucmentBar 
-      
-      strong="promocja Early Bird 🕊️"
-      text="Wypróbuj 30 dni za darmo • plan Lifetime -50%"
-      // linkComponent={<>
-      //   <Link href="/">
-      //     <Button variant="default" className="flex-none rounded-full bg-white/10 px-3.5 py-0 text-sm font-semibold text-white shadow-xs inset-ring-white/20 hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
-      //       Skontaktuj się z nami 📞
-      //     </Button>
-      //   </Link>
-      // </>}
-      
-      
-      
-      />*/}
-      
+
       {/* Header */}
       <LandingHeader
         withBackground
@@ -66,7 +43,7 @@ export default function V1() {
         logoComponent={<Logo centered />}
         annoucmentBarValue="promocja Early Birds 🕊️ • Wypróbuj 30 dni za darmo • plan Lifetime -50%"
       >
-        <LandingHeaderMenuItem href="/" type="icon-button" variant="outlinePrimary" label=<><Phone /></> />
+        <LandingHeaderMenuItem href="tel:+48608709237" type="icon-button" variant="outlinePrimary" label=<><Phone /></> />
         <LandingHeaderMenuItem href="#moduly" label="Moduły" />
         <LandingHeaderMenuItem href="#funkcje" label="Funkcje" />
         <LandingHeaderMenuItem href="#jak-dziala" label="Jak działa" />
@@ -80,7 +57,7 @@ export default function V1() {
         />
         <LandingHeaderMenuItem
           href={REGISTER_URL}
-          label={copy.ctaPrimary}
+          label={copy.cta.primary.text}
           type="button"
         />
       </LandingHeader>
@@ -88,16 +65,6 @@ export default function V1() {
       {/* Hero Section */}
       <LandingPrimaryVideoCtaSection
         title={copy.hero.h1}
-        // title={<>
-        //   <TextType
-        //     className="text-4xl"
-        //     text={[copy.h1]}
-        //     typingSpeed={20}
-        //     pauseDuration={1500}
-        //     showCursor={false}
-        //     cursorCharacter="|"
-        //   />
-        // </>}
         description={copy.hero.headline}
         videoPoster="/app_mock_desktop.png"
         videoSrc="https://cache.shipixen.com/features/8-customize-pages.mp4"
@@ -116,12 +83,12 @@ export default function V1() {
 
         <Button size="xl" asChild variant="primary">
           <a href={REGISTER_URL}>
-            {copy.ctaPrimary}
+            {copy.cta.primary.text}
           </a>
         </Button>
         <Button size="xl" variant="outlinePrimary">
           <a href="https://calendly.com/printflowapp/printflow-darmowa-prezentacja-q-a">
-            {copy.ctaSecondary}
+            {copy.cta.secondary.text}
           </a>
         </Button>
 
@@ -129,11 +96,10 @@ export default function V1() {
           className="w-full flex justify-center"
           discountValueText={copy.hero.discountValue}
           discountDescriptionText={copy.hero.discountDesc}
-
-        />
+        />    
       </LandingPrimaryVideoCtaSection>
 
-      <ProductTour 
+      <ProductTour
         steps_1={copy.product_tour.steps_1}
         steps_2={copy.product_tour.steps_2}
       />
@@ -176,7 +142,7 @@ export default function V1() {
 
         </LandingProductSteps>
       </section>
-
+      
       {/* Problem Agitator */}
       {/*<LandingProblemAgitator*/}
       {/*  title="Czy Twoja drukarnia traci pieniądze przez brak kontroli procesu?"*/}
@@ -231,7 +197,6 @@ export default function V1() {
       {/*  ]}*/}
       {/*/>*/}
 
-      {/* Sekcja: Moduły (nowa sekcja Product Features Grid) */}
       <section>
         <LandingProductFeaturesGrid
           title={copy.roadmap.title}
@@ -262,259 +227,6 @@ export default function V1() {
         </LandingProductFeaturesGrid>
       </section>
 
-      {/* Pasek statusu modułów (Social Proof Band – nowa komunikacja roadmapy) */}
-      {/*<section className="py-8 text-center" aria-label="Status modułów">*/}
-      {/*  <LandingSocialProofBand>*/}
-      {/*    <LandingSocialProofBandItem graphic="zap">*/}
-      {/*      Fleksografia: dostępna produkcyjnie*/}
-      {/*    </LandingSocialProofBandItem>*/}
-      {/*    <LandingSocialProofBandItem graphic="magic">*/}
-      {/*      Cyfrowy arkusz: w przygotowaniu*/}
-      {/*    </LandingSocialProofBandItem>*/}
-      {/*    <LandingSocialProofBandItem graphic="time">*/}
-      {/*      Cyfrowy rolowy: w przygotowaniu*/}
-      {/*    </LandingSocialProofBandItem>*/}
-      {/*  </LandingSocialProofBand>*/}
-      {/*</section>*/}
-
-
-      {/* Key Points (krótkie USP) */}
-
-
-      {/* Stats (nowa sekcja) */}
-      {/*<LandingStatsSection*/}
-      {/*  title="Efekty wdrożenia"*/}
-      {/*  description="Dane, które mają znaczenie w codziennej produkcji"*/}
-      {/*  stats={[*/}
-      {/*    {*/}
-      {/*      value: "5×", label: "Szybsze przygotowanie ofert",*/}
-      {/*      description: "aaa"*/}
-      {/*    },*/}
-      {/*    { value: '20%', label: 'Mniej odpadów dzięki kontroli etapów', description: "aaa" },*/}
-      {/*    { value: '100%', label: 'Historia operacji i rozliczalność', description: "aaa" },*/}
-      {/*    { value: '24/7', label: 'Dostęp do kluczowych danych', description: "aaa" },*/}
-      {/*  ]}*/}
-      {/*  withBackground*/}
-      {/*/>*/}
-
-      {/* Kroki: Jak działa */}
-
-      {/*<LandingProductTourSection*/}
-      {/*  title="Jak to działa — 5 prostych kroków"*/}
-      {/*  description="Założenie konta zajmuje 3 minuty!"*/}
-      {/*  defaultValue="step-1"*/}
-      {/*>*/}
-      {/*  <LandingProductTourList>*/}
-      {/*    {[*/}
-      {/*      {*/}
-      {/*        value: "step-1",*/}
-      {/*        title: "Dodaj pierwszego Klienta",*/}
-      {/*        description:*/}
-      {/*          "Wypełnij formularz i kliknij \"Dodaj\". Jeśli chciałbyś zaimportować istniejącą listę Klientów (np. z pliku CSV), pomożemy w tym procesie!",*/}
-
-      {/*      },*/}
-      {/*      {*/}
-      {/*        value: "step-2",*/}
-      {/*        title: "Stwórz konta pracowników",*/}
-      {/*        description:*/}
-      {/*          "Podaj login lub email, określ Rolę, wygeneruj hasło, a skopiowane do schowka dane logowania prześlij pracownikowi.",*/}
-
-
-      {/*      },*/}
-      {/*      {*/}
-      {/*        value: "step-3",*/}
-      {/*        title: "Wybierz Klienta, a następnie dodaj Produkt",*/}
-      {/*        description:*/}
-      {/*          "Stwórz wszystkie komponenty Produktu, pozostając na tej samej stronie i kliknij \"Dodaj\". Produkt stworzony i przypisany do wybranego Klienta.",*/}
-
-
-      {/*      },*/}
-      {/*      {*/}
-      {/*        value: "step-4",*/}
-      {/*        title: "Utwórz Zlecenie z nowego Produktu",*/}
-      {/*        description:*/}
-      {/*          "Wybierz Klienta, Produkt, który przed chwilą utworzyłeś, podaj nakład, datę realizacji i stwórz Zlecenie.",*/}
-
-      {/*      },*/}
-      {/*      {*/}
-      {/*        value: "step-5",*/}
-      {/*        title: "Przeglądaj i zarządzaj Zleceniami w 1 miejscu",*/}
-      {/*        description:*/}
-      {/*          "Filtruj i przeglądaj Zlecenia, sprawdzaj etap produkcji, monitoruj odpady oraz zgłoszone uwagi.",*/}
-
-      {/*      }*/}
-      {/*    ].map(({ value, title, description }) => (*/}
-      {/*      <LandingProductTourTrigger key={value} value={value}>*/}
-      {/*        <p className="text-xl font-bold">{title}</p>*/}
-      {/*        <p>{description}</p>*/}
-      {/*      </LandingProductTourTrigger>*/}
-      {/*    ))}*/}
-      {/*  </LandingProductTourList>*/}
-
-      {/*  {[*/}
-      {/*    {*/}
-      {/*      value: "step-1",*/}
-      {/*      src: "/add_client_desktop.png",*/}
-      {/*      alt: "Dodawanie Klienta"*/}
-
-      {/*    },*/}
-      {/*    {*/}
-      {/*      value: "step-2",*/}
-      {/*      src: "/add_user_desktop.png",*/}
-      {/*      alt: "Tworzenie konta pracownika"*/}
-
-
-      {/*    },*/}
-      {/*    {*/}
-      {/*      value: "step-3",*/}
-      {/*      src: "/add_product_desktop.png",*/}
-      {/*      alt: "Dodawanie Produktu"*/}
-
-
-      {/*    },*/}
-      {/*    {*/}
-      {/*      value: "step-4",*/}
-      {/*      src: "/add_order_desktop.png",*/}
-      {/*      alt: "Dodawanie Zlecenia"*/}
-
-      {/*    },*/}
-      {/*    {*/}
-      {/*      value: "step-5",*/}
-      {/*      src: "/orders_desktop.png",*/}
-      {/*      alt: "Zarządzanie zleceniami"*/}
-
-      {/*    }*/}
-      {/*  ].map(({ value, src, alt }) => (*/}
-      {/*    <LandingProductTourContent value={value}>*/}
-      {/*      <Image*/}
-      {/*        width={400}*/}
-      {/*        height={600}*/}
-      {/*        className="w-full rounded-md"*/}
-      {/*        src={src}*/}
-      {/*        alt={alt}*/}
-      {/*        fetchPriority="high"*/}
-      {/*      />*/}
-      {/*    </LandingProductTourContent>*/}
-      {/*  ))}*/}
-      {/*</LandingProductTourSection>*/}
-
-      {/*<LandingProductTourSection*/}
-      {/*  title="Jak to działa — 5 prostych kroków"*/}
-      {/*  description="Założenie konta zajmuje 3 minuty!"*/}
-      {/*  defaultValue="step-1"*/}
-      {/*>*/}
-      {/*  <LandingProductTourList>*/}
-      {/*    <LandingProductTourTrigger value="step-1">*/}
-      {/*      <p className="text-xl font-bold">*/}
-      {/*        Dodaj pierwszego Klienta*/}
-      {/*      </p>*/}
-      {/*      <p>*/}
-      {/*        Wypełnij formularz i kliknij "Dodaj". Jeśli chciałbyś zaimportować istniejącą listę Klientów (np. z pliku CSV), pomożemy w tym procesie!*/}
-      {/*      </p>*/}
-      {/*    </LandingProductTourTrigger>*/}
-
-      {/*    <LandingProductTourTrigger value="step-2">*/}
-      {/*      <p className="text-xl font-bold">*/}
-      {/*        Stwórz konta pracowników*/}
-      {/*      </p>*/}
-      {/*      <p>*/}
-      {/*        Podaj login lub email, określ Rolę, wygeneruj hasło, a skopiowane do schowka dane logowania prześlij pracownikowi.*/}
-      {/*      </p>*/}
-      {/*    </LandingProductTourTrigger>*/}
-
-      {/*    <LandingProductTourTrigger value="step-3">*/}
-      {/*      <p className="text-xl font-bold">*/}
-      {/*        Wybierz Klienta, a następnie dodaj Produkt*/}
-      {/*      </p>*/}
-      {/*      <p>*/}
-      {/*        Stwórz wszystkie komponenty Produktu, pozostając na tej samej stronie i kliknij "Dodaj". Produkt stworzony i przypisany do wybranego Klienta.*/}
-      {/*      </p>*/}
-      {/*    </LandingProductTourTrigger>*/}
-
-      {/*    <LandingProductTourTrigger value="step-4">*/}
-      {/*      <p className="text-xl font-bold">*/}
-      {/*        Utwórz Zlecenie z nowego Produktu*/}
-      {/*      </p>*/}
-      {/*      <p>*/}
-      {/*        Wybierz Klienta, Produkt, który przed chwilą utworzyłeś, podaj nakład, datę realizacji i stwórz Zlecenie.*/}
-      {/*      </p>*/}
-      {/*    </LandingProductTourTrigger>*/}
-
-      {/*    <LandingProductTourTrigger value="step-5">*/}
-      {/*      <p className="text-xl font-bold">*/}
-      {/*        Przeglądaj i zarządzaj Zleceniami w 1 miejscu*/}
-      {/*      </p>*/}
-      {/*      <p>*/}
-      {/*        Filtruj i przeglądaj Zlecenia, sprawdzaj etap produkcji, monitoruj odpady oraz zgłoszone uwagi.*/}
-      {/*      </p>*/}
-      {/*    </LandingProductTourTrigger>*/}
-      {/*  </LandingProductTourList>*/}
-
-      {/*  <LandingProductTourContent value="step-1">*/}
-      {/*    <img*/}
-      {/*      className="w-full rounded-md"*/}
-      {/*      src="/add_client_desktop.png"*/}
-      {/*      alt="Dodawanie Klienta"*/}
-      {/*    />*/}
-      {/*  </LandingProductTourContent>*/}
-
-      {/*  <LandingProductTourContent value="step-2">*/}
-      {/*    <img*/}
-      {/*      className="w-full rounded-md"*/}
-      {/*      src="/add_user_desktop.png"*/}
-      {/*      alt="Tworzenie konta pracownika"*/}
-      {/*    />*/}
-      {/*  </LandingProductTourContent>*/}
-
-      {/*  <LandingProductTourContent value="step-3">*/}
-      {/*    <img*/}
-      {/*      className="w-full rounded-md"*/}
-      {/*      src="/add_product_desktop.png"*/}
-      {/*      alt="Dodawanie Produktu"*/}
-      {/*    />*/}
-      {/*  </LandingProductTourContent>*/}
-
-      {/*  <LandingProductTourContent value="step-4">*/}
-      {/*    <img*/}
-      {/*      className="w-full rounded-md"*/}
-      {/*      src="/add_order_desktop.png"*/}
-      {/*      alt="Dodawanie Zlecenia"*/}
-      {/*    />*/}
-      {/*  </LandingProductTourContent>*/}
-
-      {/*  <LandingProductTourContent value="step-5">*/}
-      {/*    <img*/}
-      {/*      className="w-full rounded-md"*/}
-      {/*      src="/orders_desktop.png"*/}
-      {/*      alt="Zarządzanie zleceniami"*/}
-      {/*    />*/}
-      {/*  </LandingProductTourContent>*/}
-      {/*</LandingProductTourSection>*/}
-
-
-      {/* Showcase / Social Proof rozszerzony */}
-      {/*<section className="py-12 text-center">*/}
-      {/*  <h2 className="text-2xl font-bold mb-8">Zaufały nam drukarnie w całej Polsce</h2>*/}
-      {/*  <LandingSocialProofBand>*/}
-      {/*    <LandingSocialProofBandItem graphic="checkmark">*/}
-      {/*      250+ kont utworzonych w systemie*/}
-      {/*    </LandingSocialProofBandItem>*/}
-      {/*    <LandingSocialProofBandItem graphic="trophy">*/}
-      {/*      Wysoka stabilność i jakość wdrożeń*/}
-      {/*    </LandingSocialProofBandItem>*/}
-      {/*    <LandingSocialProofBandItem graphic="rating">*/}
-      {/*      Średnia ocena 4.9/5*/}
-      {/*    </LandingSocialProofBandItem>*/}
-      {/*    <LandingSocialProofBandItem graphic="zap">*/}
-      {/*      Szybkie wdrożenie i start pracy*/}
-      {/*    </LandingSocialProofBandItem>*/}
-      {/*    <LandingSocialProofBandItem graphic="magic">*/}
-      {/*      Automatyzacja krytycznych procesów*/}
-      {/*    </LandingSocialProofBandItem>*/}
-      {/*  </LandingSocialProofBand>*/}
-      {/*</section>*/}
-
-      {/* Cennik */}
       <section>
         <LandingPricingSection
           // pt0
@@ -628,6 +340,25 @@ export default function V1() {
           <Button size="xl" variant="outlinePrimary" asChild>
             <a href={copy.cta.secondary.path}>{copy.cta.secondary.text}</a>
           </Button>
+          
+          <div>
+            <LandingSocialProofBand className="bg-transparent">
+              <LandingSocialProofBandItem>
+                W fazie rozwoju - Twoja opinia pomoże nam tworzyć lepszy produkt
+              </LandingSocialProofBandItem>
+            </LandingSocialProofBand>
+            <LandingSocialProofBand className="bg-transparent">
+              <LandingSocialProofBandItem>
+                Stworzony przez zespół z doświadczeniem w branży poligraficznej
+              </LandingSocialProofBandItem>
+            </LandingSocialProofBand>
+            <LandingSocialProofBand className="bg-transparent">
+              <LandingSocialProofBandItem>
+                Pierwsi użytkownicy pomagają kształtować przyszłość PrintFlow
+              </LandingSocialProofBandItem>
+            </LandingSocialProofBand>
+          </div>
+          
         </LandingPrimaryTextCtaSection>
       </section>
 

@@ -19,15 +19,10 @@ export const copy = {
       path: "https://calendly.com/printflowapp/printflow-darmowa-prezentacja-q-a"
     }
   },
-  ctaPrimary: "Zacznij za darmo", // BYŁO: różne warianty "Wypróbuj", "Testuj przez 30 dni za darmo"
-
-  ctaSecondary: "Umów darmową prezentację", // BYŁO: "*Karta kredytowa nie jest wymagana"
-  // h1: "Przestań zgadywać - zacznij mierzyć koszty drukarni", // BYŁO: "Zwiększ zyski swojej drukarni o 30% dzięki kontroli odpadów"
   hero: {
     h1: <>Zarządzanie drukarnią oparte na danych,<br/> nie domysłach</>, // BYŁO: "Zwiększ zyski swojej drukarni o 30% dzięki kontroli odpadów",
     headline: <>
       <span>PrintFlow to nowoczesna platforma online do prowadzenia drukarni fleksograficznych. Odzyskaj kontrolę nad</span>
-      {/*odpadami, marżą, produktami, zleceniami, dokumentami. Analizuj kluczowe dane.*/}
       <RotatingText
         texts={["odpadami.", "marżą.", "produktami.", "zleceniami.", "dokumentami."]}
         mainClassName="inline-flex w-[150px] justify-start px-[4px] bg-transparent text-primary-600 font-bold overflow-hidden py-0.5 sm:py-0.5 md:py-0.5 rounded-lg"
@@ -140,7 +135,7 @@ export const copy = {
     title: "Kontroluj każdy grosz — od wyceny do realizacji",
     items: [
       {
-        title: "Dowiedz się kto dodał daną Wycenę oraz jakich cen użył",
+        title: "Pełen wgląd w Wyceny i zyski",
         description: "Chcesz wiedzieć, który z handlowców generuje największe marże? Nie ma problemu.",
         icon: <Calculator className="w-6 h-6" />
       },
@@ -170,7 +165,8 @@ export const copy = {
     items: [
       {
         title: "Dodaj pierwszego Klienta",
-        description: "Wypełnij dane i dodaj Klienta. Jeśli chciałbyś zaimportować istniejącą listę Klientów (np. z pliku CSV), pomożemy w tym procesie!",
+        description: `Po prostu wypełnij dane i naciśnij "Dodaj".`,
+        // description: "Po prostu wypełnij dane i dodaj Klienta. Jeśli chciałbyś zaimportować istniejącą listę Klientów (np. z pliku CSV), pomożemy w tym procesie!",
         imageSrc: "/add_client_desktop.png",
         imageAlt: "Dodawanie Klienta",
       },
@@ -195,7 +191,8 @@ export const copy = {
     ]
   },
   roadmap: {
-    title: "Trzy moduły - jeden ekosystem",
+    title: "Jedna platforma dla wszystkich technologii druku",
+    // title: "Trzy moduły - jeden ekosystem",
     items:  [
      {
        title: "Fleksograficzny",
