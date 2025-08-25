@@ -289,7 +289,7 @@ export const copy = {
         features: [
           "Wszystko z planu Professional oraz Enterprise",
           "Integracje z maszynami przez API",
-          "Dostosowania do procesów firmy (cutomizacje)",
+          "Dostosowania do procesów firmy (customizacje)",
           "Dedykowany opiekun",
         ],
         prices: {
@@ -317,13 +317,13 @@ export const copy = {
         prices: {
           monthly: {
             priceSuffix: "jednorazowo",
-            discountPrice: 39000,
-            price: 50000
+            discountPrice: 39999,
+            price: 79999
           },
           annual: {
             priceSuffix: "jednorazowo",
-            discountPrice: 39000,
-            price: 50000
+            discountPrice: 39999,
+            price: 79999
           } 
         }
       },
